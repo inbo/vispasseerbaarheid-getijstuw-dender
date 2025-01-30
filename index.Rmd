@@ -1,0 +1,96 @@
+---
+title: "Deskstudie over de vispasseerbaarheid van de getijdestuw op de Dender in Dendermonde"
+author:
+  - name:
+      given: "Stijn"
+      family: "Bruneel"
+    email: "stijn.bruneel@inbo.be"
+    orcid: "0000-0002-8226-8080"
+    affiliation: "Instituut voor Natuur- en Bosonderzoek (INBO)"
+    corresponding: true
+reviewer:
+  - name:
+      given: "Pieterjan"
+      family: "Verhelst"
+    email: "pieterjan.verhelst@inbo.be"
+    orcid: "0000-0002-2610-6941"
+    affiliation: "Instituut voor Natuur- en Bosonderzoek (INBO)"
+lang: nl
+style: INBO
+client:
+  - DVW
+floatbarrier: subsubsection
+lof: TRUE
+lot: TRUE
+keywords: "vispassage; Dender; Schelde; getijdestuw; deskstudie"
+community: "inbo"
+publication_type: report
+funder: Instituut voor Natuur- en Bosonderzoek (INBO)
+rightsholder: Instituut voor Natuur- en Bosonderzoek (INBO)
+bibliography: references.bib
+link-citations: TRUE
+site: bookdown::bookdown_site
+always_allow_html: TRUE
+output:
+  INBOmd::pdf_report: default
+  INBOmd::gitbook: default
+  INBOmd::epub_book: default
+  bookdown::dontrun: default
+  bookdown::html_book: default
+  bookdown::word_document2: default
+---
+
+# Dankwoord {.unnumbered}
+
+De tekst voor het optionele dankwoord.
+
+# Voorwoord {.unnumbered}
+
+De tekst voor het optionele voorwoord.
+
+# Samenvatting {.unnumbered}
+
+<!-- description: start -->
+
+De tekst voor de verplichte samenvatting.
+Hou het [Heerlijk Helder](https://overheid.vlaanderen.be/communicatie/heerlijk-helder).
+<!-- description: end -->
+
+# Aanbevelingen voor beheer en/of beleid {.unnumbered}
+
+Verplicht wanneer relevant.
+
+```{r setup, include = FALSE}
+library(knitr)
+opts_chunk$set(
+  echo = FALSE,
+  eval = TRUE,
+  cache = FALSE,
+  warning = TRUE,
+  error = FALSE,
+  message = TRUE
+)
+library(tidyverse)
+library(INBOtheme)
+if (interactive()) {
+  theme_set(theme_inbo(base_size = 10))
+} else {
+  switch(
+    opts_knit$get("rmarkdown.pandoc.to"),
+    html = {
+      opts_chunk$set(dev = "png", dpi = 72)
+      theme_set(theme_inbo(base_size = 12))
+    },
+    latex = {
+      opts_chunk$set(dev = "cairo_pdf", dpi = 300)
+      theme_set(theme_inbo(base_size = 9))
+      update_geom_defaults("point", list(size = 1.5))
+    },
+    epub3 = {
+      opts_chunk$set(dev = "png", dpi = 300)
+      theme_set(theme_inbo(base_size = 12))
+    }
+  )
+}
+```
+
