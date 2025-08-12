@@ -11,45 +11,99 @@ Kunstwerken die vaak nodig zijn voor scheepvaart of oppervlaktewaterhuishouding.
 Meer dan de helft van de zoetwatervissen in Vlaanderen zijn dan ook uitgestorven, met uitsterven bedreigd, bedreigd of kwetsbaar.
 Om dit tegen te gaan werd bij wet vastgelegd in o.a.
 de Benelux‐beschikking van 1996 en 2009 dat de betrokken regering de vrije vismigratie in alle hydrografische stroomgebieden moet verzekeren.
-Eén van die potentiële vismigratieknelpunten betreft het getijde-stuwsluiscomplex aan de monding van de Dender in de Zeeschelde in Dendermonde.
+Eén van die potentiële vismigratieknelpunten betreft het getijde-stuwsluiscomplex (verder kortweg getijdestuw genoemd) aan de monding van de Dender in de Zeeschelde in Dendermonde.
+
+De getijdestuw in Dendermonde maakt deel uit van het Sigmaplan, een ambitieus project dat Vlaanderen wil beschermen tegen overstromingen vanuit de Schelde.
+Naast de cruciale veiligheidsfunctie vormt deze stuw ook een belangrijke schakel in het behoud en herstel van ecologische verbindingen in het getijdengebied.
+Eén van de grootste uitdagingen daarbij is het verzekeren van de vispasseerbaarheid: hoe kunnen vissen zich vrij verplaatsen tussen de verschillende delen van de rivier, ondanks de aanwezigheid van een kunstmatige hindernis?
+
+Vispasseerbaarheid is van groot belang voor het behoud van biodiversiteit en de natuurlijke dynamiek van het estuarium.
+Veel vissoorten migreren immers stroomop- en stroomafwaarts voor hun voortplanting, groei en overleving.
+De getijdestuw mag deze migratie niet volledig blokkeren, zeker niet in een ecologisch waardevol gebied zoals de Schelde en haar zijrivieren.
+Daarom wordt bij het ontwerp en de bouw van de stuw bijzondere aandacht besteed aan visvriendelijke oplossingen, zoals vispassages of specifieke openingen en werkingsregimes.
+In dit rapport wordt dieper ingegaan op de vispasseerbaarheid onder het huidig beheer van de getijdestuw in Dendermonde, of het gewenst is om de vispasseerbaarheid te verhogen, de manier waarop dit zou gerealiseerd kunnen worden en welke technische en ecologische afwegingen daarbij komen kijken.
 
 # Onderzoeksvragen
 
-Vormt het getijdecomplex een gehele of gedeeltelijke barrière voor de stroomopwaartse migratie van vissen vanuit de Zeeschelde naar de Dender?
-Kunnen mitigerende (beheers-)maatregelen voorgesteld en in voege gebrachte worden die potentieel een oplossing bieden voor het herstel van vismigratie?
+## Onderzoeksvraag 1
+
+**In welke mate vormt het getijdecomplex in Dendermonde een gehele of gedeeltelijke barrière voor de stroomopwaartse migratie van vissen vanuit de Zeeschelde naar de Dender?**
+
+Deze vraag richt zich op het analyseren van het effect van de getijdestuw op de natuurlijke vismigratie tussen de Zeeschelde en haar zijrivier, de Dender.
+Daarbij wordt nagegaan of het getijdecomplex een volledige blokkade vormt, of slechts gedeeltelijk beperkt doorlaatbaar is voor migrerende vissoorten.
+Het onderzoek kijkt zowel naar de fysieke kenmerken van de stuw (hoogte, sluizen, technische voorzieningen) als naar de ecologische en hydrologische factoren die de migratie beïnvloeden, zoals stroming en getijdenregime.
+Het doel is om een duidelijk beeld te krijgen van de mate waarin de constructie de natuurlijke migratieprocessen verstoort.
+
+## Onderzoeksvraag 2
+
+**Welke mitigerende of beheerstechnische maatregelen kunnen worden voorgesteld en eventueel geïmplementeerd om de vismigratie tussen de Zeeschelde en de Dender te verbeteren of te herstellen?**
+
+Deze vraag richt zich op het identificeren en evalueren van mogelijke oplossingen om de negatieve effecten van de getijdestuw op vismigratie te beperken of ongedaan te maken.
+Hierbij wordt gedacht aan maatregelen zoals de aanleg van vispassages (bijvoorbeeld een vistrap, vislift of bypass), aanpassingen in het bedieningsregime van de stuw, of ecologisch herstel in de omgeving van het complex.
+Het onderzoek beoogt niet alleen te inventariseren welke maatregelen theoretisch mogelijk zijn, maar ook te beoordelen of ze technisch haalbaar, effectief en duurzaam zijn binnen de lokale context van het getijdengebied en het Sigmaplan.
 
 # Doelstelling
 
-Verkennende desktop-beoordeling over de vispasseerbaarheid van de getijdestuw op de Dender in Dendermonde onder het huidige beheer.
+Deze verkennende deskstudie heeft als doel de stroomopwaartse vispasseerbaarheid van de getijdestuw op de Dender in Dendermonde te evalueren onder het huidige beheer.
+De studie vormt een eerste stap richting een mogelijke optimalisatie van het stuwbeheer met het oog op ecologische connectiviteit, en meer specifiek, vismigratie.
 
-In functie van de beoordeling van de fysieke stroomopwaartse vispasseerbaarheid van de getijdestuw worden in de deskstudie volgende onderdelen behandeld:
+**Technische karakteristieken van het sluisstuwcomplex**
 
--   Technische beschrijving van het sluisstuwcomplex, in het bijzonder van de in 2012 gerenoveerde getijdestuw (werking van de schuiven, openingen, … ?)
+Een overzicht van de technische eigenschappen van het complex, met bijzondere aandacht voor de in 2012 gerenoveerde getijdestuw.
+Volgende elementen worden beschreven:
 
--   Beschrijving en bespreking van het beheer van de getijdestuw zoals vandaag wordt toegepast (analyse van debieten en op-en afwaartse waterstanden o.a. in relatie tot de tijwerking, stroomsnelheden, … ?)
+-   De werking van de schuiven en de regeling ervan
+-   De geometrie en positie van de openingen
+-   Eventuele bestaande voorzieningen of beperkingen met betrekking tot vispasseerbaarheid
 
-Afhankelijk van bovenstaande wordt in de deskstudie potentieel ook verder uitgewerkt of een verbeterd beheer kan voorgesteld en/of toegepast worden in functie van stroomopwaartse vismigratie, bijvoorbeeld naar analogie van de ‘vismigratiestand’ van de getijdestuw (bovenstuw 222) op de Dijle in Mechelen (Stevens & Coeck, 2010).
-Na potentiële implementatie van een vismigratiebeheer van de getijdestuw moet er in een latere fase een onderzoeksvoorstel opgemaakt worden waarin wordt beschreven hoe de stroomopwaartse vispasseerbaarheid van de getijdestuw op de Dender in Dendermonde kan worden onderzocht/geëvalueerd.
-Dit gebeurde eerder ook voor de aanpassing van het beheer met een ‘vismigratiestand’ bij de bovenstuw in Mechelen (Vermeersch et al. 2017), maar in Dendermonde betreft het een andere uitgangssituatie met scheepvaart boven de stuw.
+**Analyse van het huidige beheer van de getijdestuw**
+
+De huidige beheerstrategie van de getijdestuw wordt geanalyseerd op basis van beschikbare gegevens, waaronder:
+
+-   Debieten en waterstandsmetingen stroomopwaarts en stroomafwaarts
+-   De invloed van tijwerking op de stuwbediening
+-   Resulterende stroomsnelheden en waterniveauverschillen nabij de stuw
+-   Potentiële vensters waarin vismigratie mogelijk zou kunnen zijn
+
+**Potentieel voor vismigratiebeheer**
+
+Op basis van de bovenstaande analyse wordt nagegaan of een aangepast beheer ter bevordering van stroomopwaartse vismigratie haalbaar en wenselijk is.
+Hierbij wordt onder andere gekeken naar:
+
+-   De mogelijkheid tot invoering van een zogenaamde *vismigratiestand*, naar analogie met de werking van bovenstuw 222 op de Dijle in Mechelen (Stevens & Coeck, 2010)
+-   Beperkingen of randvoorwaarden, zoals de noodzaak tot gegarandeerde bevaarbaarheid stroomopwaarts van de stuw
+
+**Voorstel voor vervolgonderzoek**
+
+Indien blijkt dat een vismigratiebeheer kansrijk is, wordt in een volgende fase een onderzoeksvoorstel uitgewerkt om de effectiviteit van dergelijk aangepast beheer te evalueren.
+Dit kan bestaan uit:
+
+-   Veldmetingen van vismigratie aan de hand van monitoring of telemetrie
+-   Hydraulische modellering van stroomsnelheden tijdens migratievensters
+-   Vergelijking met eerdere evaluaties van aangepast stuwbeheer, zoals in Mechelen (Vermeersch et al., 2017)
 
 # Inleiding
 
-De meeste stuwen op de Dender zitten in een herbouwfase.
-De stuwen zorgen ervoor dat het waterpeil van de Dender kan worden geregeld.
-Ze zorgen ervoor dat er steeds voldoende waterdiepte is voor de scheepvaart.
+De Dender wordt gereguleerd door een reeks stuwen die instaan voor het handhaven van voldoende waterpeil, onder andere ten behoeve van de bevaarbaarheid van de rivier.
 Tussen de bron in Ath en de monding in Dendermonde bevinden zich veertien stuwen, waarvan acht op Vlaams grondgebied.
-Momenteel zijn de stuwen op de Dender erg verouderd.
-Hun afvoercapaciteit is ook te beperkt.
-Enkel de meest stroomafwaartse stuw van Dendermonde werd al in 2012 gerenoveerd.
-Om de Dender ook in de toekomst bevaarbaar te houden en de wateroverlast te beperken, worden daarom zes van de acht stuwen op Vlaams grondgebied vernieuwd en wordt de stuw van Teralfene afgeschaft.
-Om de bedrijfszekerheid te verhogen, worden ze vervangen door geautomatiseerde klepbalgstuwen.
-De stuwen die herbouwd worden zijn de stuwen van Denderbelle, Aalst, Denderleeuw, Pollare, Idegem en Geraardsbergen.
-In combinatie met de bouw van de nieuwe stuwen worden op al deze locaties ook vispassages aangelegd zodat vismigratie tussen de verschillende verstuwde panden mogelijk wordt gemaakt.
-Deze sanering van vismigratieknelpunten kadert binnen De Beneluxbeschikking in zake vrije vismigratie (M.2009.01), de palingverordening (EG/1100/2007), de Europese kaderrichtlijn Water (Richtlijn 2000/60/EG) en het decreet Integraal Waterbeleid.
-Na sanering van de knelpunten op de Dender wordt vrije vismigratie opnieuw mogelijk in het Vlaams deel van de Dender en verder stroomopwaarts.
-Ook in Wallonië worden immers onder impuls van bovenstaande wetgevingen inspanningen gedaan om knelpunten weg te werken, zo werd er o.a.
-al in Attre (nabij Ath) een vismigratiefaciliteit gerealiseerd.
-Voor potamodrome en diadrome vissoorten is het echter belangrijk dat ze respectievelijk tussen verschillende stroomgebieden en van en naar de zee kunnen migreren.
-Daarom is het belangrijk om de passeerbaarheid van de stuw in Dendermonde te onderzoeken.
-Dit gebeurt in eerste instantie via een deskstudie.
-Als uit onderzoek blijkt dat de Dender vanuit de Zeeschelde optrekbaar is via de getijdestuw in Dendermonde dan betekent dit dat er na de geplande sanering van alle opwaartse knelpunten opnieuw kansen zullen zijn voor trekvissoorten zoals paling, bot, driedoornige stekelbaars, spiering, … en voor potamodrome soorten zoals winde, blankvoorn, Europese meerval, … om de Dender op te zwemmen tot in Wallonië en om belangrijke zijrivieren te koloniseren, zoals de Marke, de Molenbeek-Terkleppebeek, de Molenbeek-Pachtbosbeek, de Bellebeek, de Molenbeek-Ter Erpenbeek en de Vondelbeek.
+De meeste van deze stuwen zijn sterk verouderd en beschikken over een beperkte afvoercapaciteit.
+Enkel de meest stroomafwaartse stuw, gelegen in Dendermonde, werd reeds gerenoveerd in 2012.
+
+Om de Dender in de toekomst bevaarbaar te houden en wateroverlast te beperken, werd beslist om zes van de acht Vlaamse stuwen te vernieuwen.
+De stuw van Teralfene wordt daarbij afgeschaft.
+De vernieuwde stuwen in Denderbelle, Aalst, Denderleeuw, Pollare, Idegem en Geraardsbergen zullen worden vervangen door geautomatiseerde klepbalgstuwen, wat bijdraagt aan een verhoogde bedrijfszekerheid.
+
+Parallel aan deze infrastructuurwerken worden op elke locatie ook vispassages aangelegd.
+Deze ingreep maakt vismigratie mogelijk tussen de verschillende verstuwde panden en draagt bij aan de ecologische connectiviteit van het watersysteem.
+De sanering van deze vismigratieknelpunten kadert binnen diverse beleidskaders, waaronder: - De Beneluxbeschikking inzake vrije vismigratie (M.2009.01), - De Europese palingverordening (EG/1100/2007), - De Europese Kaderrichtlijn Water (2000/60/EG), - En het Vlaamse decreet Integraal Waterbeleid.
+
+Na de sanering van de knelpunten op Vlaams grondgebied zal vrije vismigratie in principe opnieuw mogelijk worden in het Vlaamse deel van de Dender en verder stroomopwaarts.
+Ook in Wallonië worden, onder invloed van bovenstaande wetgevingen, initiatieven genomen om migratiebarrières weg te nemen.
+Zo werd onder meer in Attre (nabij Ath) reeds een vismigratiefaciliteit gerealiseerd.
+
+Voor zowel potamodrome als diadrome vissoorten is connectiviteit over het volledige riviertraject essentieel: potamodrome soorten migreren binnen het stroomgebied, terwijl diadrome soorten migreren tussen zoet en zout water.
+In dat opzicht vormt de getijdestuw in Dendermonde een mogelijk knelpunt.
+Een vlotte passeerbaarheid van deze stuw is cruciaal om de migratie van soorten zoals paling, bot, driedoornige stekelbaars, spiering (diadroom) en winde, blankvoorn, Europese meerval (potamodroom) mogelijk te maken.
+
+Deze deskstudie vormt de eerste stap in de beoordeling van de vispasseerbaarheid van de getijdestuw in Dendermonde.
+Indien blijkt dat de Dender vanuit de Zeeschelde effectief optrekbaar is via deze stuw, kunnen na voltooiing van de geplande saneringen langs het Vlaamse traject opnieuw migratiemogelijkheden ontstaan tot diep in Wallonië en haar zijrivieren, waaronder de Marke, de Molenbeek-Terkleppebeek, de Molenbeek-Pachtbosbeek, de Bellebeek, de Molenbeek-Ter Erpenbeek en de Vondelbeek.
