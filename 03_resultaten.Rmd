@@ -11,6 +11,7 @@ De stuw fungeert als overgangsstructuur tussen het maritiem beïnvloede getijreg
 Aan de bovenstroomse zijde van de stuw geldt een theoretisch streefpeil van **3,82 meter TAW**, dat als referentiepeil wordt gehanteerd voor het waterbeheer in deze zone.
 Dit peil zorgt voor een gecontroleerde opstuwing van het water in de richting van de Dender bovenstrooms van Dendermonde.
 Het handhaven van dit peil is essentieel voor de werking van de stuw en het algemene peilbeheer in het intergetijdengebied.
+De bodemplaat van de stuw ligt op -1.95 meter TAW.
 
 Het sluisstuwcomplex van Dendermonde bestaat uit een combinatie van een stuwconstructie, een schutsluis en bijhorende infrastructuur voor waterbeheersing.
 Het ontwerp laat een gereguleerde uitwisseling toe tussen de getijdeninvloeden van de Zeeschelde en het bovenstrooms gelegen binnenwaterstelsel van de Dender.
@@ -30,6 +31,10 @@ Aan de benedenstroomse zijde is een erosiebeschermingslaag aangebracht om bodems
 In de **doorsnede D–E** wordt een langsdoorsnede getoond over een deel van het complex, waarbij zowel de bedieningsconstructie als het waterverloop over de stuw zichtbaar zijn.
 Het verschil in waterpeil tussen boven- en benedenstroomse zijde is goed merkbaar, vooral bij laag tij.
 De doorsnede illustreert eveneens de integratie van geleidewerken en walkanten, wat belangrijk is voor de geleiding van schepen en voor de hydraulische vormgeving van de instroomzones.
+
+## Studieperiode
+
+Door het ontbreken van data over de stroomopwaartse en stroomafwaartse peilen (op waterinfo ontbreekt de meeste data van 2023, zijn temporele resoluties inconsistent vanaf juni 2024 en werden de stationsdata mogelijk omgewisseld in 2025) is de studieperiode beperkt tot 1/1/2024 tot en met 1/4/2024
 
 ## Onderzoeksluik 1: Analyse en voorbereiding via terreinbezoeken, dataverwerking en overleg
 
@@ -107,13 +112,22 @@ waterinfo$var=factor(waterinfo$var, levels=c("waterpeil","afvoer"))
 waterinfo$loc=factor(waterinfo$loc, levels=c("Dendermonde Dender","Dendermonde Opwaarts DVW Dender","Dendermonde Afwaarts DVW tij Zeeschelde","Dendermonde tij Zeeschelde"))
 ```
 
-```{r tijdreeksenstudieperiode1, fig.height=12, fig.width=10, fig.cap="Overzicht van metingen van waterpeil (m), voor relevante meetstations doorheen de tijd. De stations staan geordend van stroomopwaarts naar stroomafwaarts."}
+```{r tijdreeksenstudieperiode1, fig.height=12, fig.width=10, fig.cap="Overzicht van metingen van waterpeil (m), voor relevante meetstations doorheen de tijd van 25 tot 28 januari 2024. De stations staan geordend van stroomopwaarts naar stroomafwaarts. Noteer hoe getracht wordt om het stroomopwaarts peil niet onder de 3.82 m TAW te laten komen."}
 ggplot(waterinfo %>% dplyr::filter(date_utc>as.POSIXct("2024-01-25 00:00") & date_utc<as.POSIXct("2024-01-29 00:00")), aes(x = date_utc, y = value)) + 
   geom_line() +
-  xlab("Datum") + ylab("Waterpeil (meter)") +
+  xlab("Datum") + ylab("Waterpeil (meter TAW)") +
   facet_wrap(~ var*loc, ncol = 1, scales="free_y") + 
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
   scale_x_datetime(date_labels = "%d-%m %H:%M", date_breaks = "12 hours") + theme_bw()
+```
+
+```{r tijdreeksenstudieperiode2, fig.height=12, fig.width=10, fig.cap="Overzicht van metingen van waterpeil (m), voor relevante meetstations doorheen de tijd van 25 tot 28 januari 2024. De stations staan geordend van stroomopwaarts naar stroomafwaarts. Noteer hoe getracht wordt om het stroomopwaarts peil niet onder de 3.82 m TAW te laten komen."}
+ggplot(waterinfo %>% dplyr::filter(date_utc>as.POSIXct("2024-01-01 00:00") & date_utc<as.POSIXct("2024-04-01 00:00")), aes(x = date_utc, y = value)) + 
+  geom_line() +
+  xlab("Datum") + ylab("Waterpeil (meter TAW)") +
+  facet_wrap(~ var*loc, ncol = 1, scales="free_y") + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+  scale_x_datetime(date_labels = "%d-%m %H:%M", date_breaks = "1 month") + theme_bw()
 ```
 
 ```{r message=FALSE, warning=FALSE}
@@ -199,13 +213,18 @@ data <- waterinfo %>%
 ```
 
 In de volgende secties wordt beschreven hoe de berekeningen gebeuren.
-Het spuidebiet (en de geassocieerde stroomsnelheid) van een getijdestuw op basis van metingen om de 5 minuten van het waterpeil boven- en benedenstrooms wordt berekend.\
-Er wordt daarbij rekening gehouden met:
+Het spuidebiet (en de geassocieerde stroomsnelheid) van een getijdestuw op basis van metingen om de 5 minuten van het waterpeil boven- en benedenstrooms wordt berekend.
+Debietsmetingen van de Dender ter hoogte van Dendermonde stroomopwaarts van de getijdestuw zijn voorhanden maar om een inschatting te kunnen maken van het debiet dat over de stuw gaat en het debiet dat onder de stuw gaat zijn berekeningen op basis van de stroomopwaartse en stroomafwaartse waterpeilen en stuwstanden nodig.
+Wanneer er sprake is van vrije stroming waarbij de stuw volledig is opgetrokken of volledig onder water staat waardoor er geen hoogteverschil is tussen het stroomopwaarts en stroomafwaarts waterpeil kan het debiet niet berekend worden.
+In die gevallen wordt het gemeten totaal debiet gebruikt omdat er dan geen onderscheid gemaakt moet worden tussen debiet dat over of onder de stuw gaat.
+
+\
+Er wordt in de berekeningen volgende zaken beschouwd:
 
 1.  **Overstroming** (wanneer water over de stuw stroomt)
 2.  **Onderstrooming** (wanneer water onder de stuw stroomt)
 3.  **Villemonte-correctie** (voor het corrigeren van ondergedompelde stromingscondities)
-4.  **Vrije stroming** (wanneer water ongehinderd kan stromen)
+4.  **Vrije stroming** (wanneer water "ongehinderd" kan stromen)
 
 ## Overzicht van de berekeningen
 
@@ -218,8 +237,8 @@ $$ **Waar:** - $Q_o$ = Discharge over the weir/ Debiet over de stuw (m³/s) - $C
 ### Stroming onder de stuw
 
 $$
-Q_u = C_d \cdot b \cdot h_u \cdot \sqrt{2g (h_up - h_{down})}
-$$ **Waar:** - $Q_u$ = Discharge under the weir/ Debiet onder de stuw (m³/s) - $C_d$ = Discharge coefficient for underflow/ Debietscoefficiënt voor onderstroom (dimensionless/ dimensieloos) - $h_u$ = Height of weir opening/ Hoogte stuw opening (m) - $h_up$ = Upstream water level/ Stroomopwaarts waterpeil (m) - $h_{down}$ = Downstream water level/ Stroomafwaarts waterpeil (m)
+Q_u = C_d \cdot b \cdot h_u \cdot \sqrt{2g (h_{up} - h_{down})}
+$$ **Waar:** - $Q_u$ = Discharge under the weir/ Debiet onder de stuw (m³/s) - $C_d$ = Discharge coefficient for underflow/ Debietscoefficiënt voor onderstroom (dimensionless/ dimensieloos) - $h_u$ = Height of weir opening/ Hoogte stuw opening (m) - $h_{up}$ = Upstream water level/ Stroomopwaarts waterpeil (m) - $h_{down}$ = Downstream water level/ Stroomafwaarts waterpeil (m)
 
 ### Villemonte Correctie
 
@@ -242,6 +261,8 @@ $$ **Waar:** - $Q_u$ = Discharge under the weir/ Debiet onder de stuw (m³/s) - 
 $$
 V = \frac{Q}{A}
 $$ **Waar:** - $V$ = Water velocity/ Waterstroomsnelheid (m/s) - $Q$ = Discharge/ Debiet (m³/s) - $A$ = Flow area/ Stromingsoppervlakte (m²) (Afhankelijk van of de stroming onder of over de stuw gaat)
+
+Samengevat is de stroomsnelheid onder de stuw afhankelijk van het hoogteverschil tussen stroomopwaarts en stroomafwaarts peil, terwijl de stroomsnelheid over de stuw wordt bepaald door de waterhoogte boven de stuwkruin.
 
 # Resultaten
 
@@ -295,6 +316,8 @@ compute_discharge <- function(h_up, h_down, h_si, h_u, b, C_e = 1.7, C_d = 0.6, 
     Q_o = Q_o * -1
     Q_u = Q_u * -1
   }
+  
+  if (is.na(Q_o) == TRUE){Q_o = 0}
   
   # Compute Velocity (using total area depending on flow type)
   A_o <- b * h_o  # Cross-section for overflow
@@ -368,9 +391,15 @@ data <- data %>%
   )
 ```
 
-## Tijdsreeksen
+## Tijdreeksen
 
-```{r fig.width=12, fig.height=20, out.width='100%', out.height='90%', fig.align='center', fig.cap="Tijdreeksen van waterhoogte en debiet. $h_downstream$ en $h_upstream$ zijn de waterhoogtes stroomafwaarts en stroomopwaarts van de stuw, $h_u$ is de hoogte van de stuwopening, $h_o$ is de waterhoogte boven de stuwkruin, $Q_o$ is het debiet over de stuw, $Q_u$ is het debiet onder de stuw."}
+Stroomafwaarts van de getijsluis wordt een uitgesproken getijderegime waargenomen (Fig. \@ref(fig:tijdsreeksberekeningen)) met laag- en hoogwaterstanden tussen de 2.86 m (0.91 m TAW) en 8.46 m (6.41 m TAW).
+Stroomopwaarts is er een streefpeil van 5.77 m (3.82 m TAW).
+In perioden van grote afvoer wanneer de stuw langs onder voor een langere tijd openstaat dan zien we het effect van laag getij op het stroomopwaarts peil dat lager wordt dan het streefpeil tot 4.79 m (6.74 m TAW).
+Wanneer het water onder de stuw gaat, observeren we eveneens een duidelijke daling van de waterhoogte boven de stuwkruin.
+Water zal zelden gelijktijdig onder als boven de stuw gaan.
+
+```{r tijdsreeksberekeningen, fig.width=12, fig.height=20, out.width='100%', out.height='90%', fig.align='center', fig.cap="Tijdreeksen van waterhoogte en debiet. $h_{downstream}$ en $h_{upstream}$ zijn de waterhoogtes stroomafwaarts en stroomopwaarts van de stuw, $h_u$ is de hoogte van de stuwopening, $h_o$ is de waterhoogte boven de stuwkruin, $Q_o$ is het debiet over de stuw, $Q_u$ is het debiet onder de stuw."}
 data %>%
   dplyr::select(-h_o_temp) %>%
   pivot_longer(
@@ -379,11 +408,23 @@ data %>%
     values_to = "value"
   ) %>%
   mutate(
-    variable = if_else(variable == "sluice_opening", "h_u", variable)
+    variable = if_else(variable == "sluice_opening", "h_u", variable),
+    # Reorder the variable column as a factor
+    variable = factor(variable, levels = c("h_downstream", "h_upstream", "h_o", "h_u", "Q_total", "Q_o", "Q_u"))
   ) %>%
   ggplot(aes(x = date_utc, y = value)) +
   geom_line() +
-  facet_wrap(~ variable, scales = "free_y", ncol = 1) +
+  facet_wrap(~ variable, scales = "free_y", ncol = 1,
+             labeller = as_labeller(c(
+               h_downstream = "Stroomafwaarts waterpeil in meter (h_downstream)",
+               h_upstream = "Stroomopwaarts waterpeil in meter (h_upstream)",
+               h_o = "Waterhoogte boven stuwkruin in meter (h_o)",
+               h_u = "Opening onder de stuw in meter (h_u)",
+               Q_total = "Totaal debiet in m³/s (Q_total)",
+               Q_o = "Debiet over de stuw in m³/s (Q_o)",
+               Q_u = "Debiet onder de stuw in m³/s (Q_u)"
+             ))
+  ) +
   labs(
     x = "Datum", y = "Waarde"
   ) +
@@ -394,7 +435,7 @@ data %>%
   )
 ```
 
-```{r fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van debiet. $Q_o$ is het debiet over de stuw, $Q_u$ is het debiet onder de stuw."}
+```{r debiettijdreeks, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van debiet. $Q_o$ is het debiet over de stuw, $Q_u$ is het debiet onder de stuw."}
 ggplot(data, aes(x = date_utc)) +
   geom_line(aes(y = Q_o, color = "Debiet over stuw (Q_o)")) +
   geom_line(aes(y = Q_u, color = "Debiet onder stuw (Q_u)")) +
@@ -407,7 +448,7 @@ ggplot(data, aes(x = date_utc)) +
   
 ```
 
-```{r fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterstroomsnelheid. $V_o$ is de stroomsnelheid over de stuw, $V_u$ is de stroomsnelheid onder de stuw."}
+```{r stroomsnelheidtijdreeks, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterstroomsnelheid. $V_o$ is de stroomsnelheid over de stuw, $V_u$ is de stroomsnelheid onder de stuw."}
 ggplot(data %>% dplyr::filter(V_o<8), aes(x = date_utc)) +
   geom_line(aes(y = V_o, color = "Stroomsnelheid over stuw (V_o)")) +
   geom_line(aes(y = V_u, color = "Stroomsnelheid onder stuw (V_u)")) +
@@ -460,9 +501,264 @@ data <- data %>%
          year = year(date_utc))
 ```
 
+Het getij t.h.v. Dendermonde is eb-gedreven aangezien eb 1.52 keer zo lang duurt als vloed (Fig. \@ref(fig:getijtijdreeks)).
+Aangezien hetzelfde volume dat binnenstroomt weer moet uitstromen is het getij-gebonden debiet 1.52 keer zo hoog bij vloed dan bij eb.
+Met andere woorden, gemiddeld genomen zal een opening van de stuw van een bepaalde duur bij vloed meer getij-gebonden water binnenlaten dan een opening van dezelfde duur bij eb.
+
+```{r getijtijdreeks, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van stroomafwaarts waterpeil met indicatie van eb en vloed."}
+source("./code/functions/add_tidal_cycle_id_manual.R")
+
+# --- 1. Process the data to add tidal IDs and phases ---
+data <- add_tidal_cycle_id_manual(data, smoothing_hours = 0.5)
+
+# --- 2. Filter for the first three tidal cycles ---
+# The number of cycles may vary based on your data and smoothing,
+# so this is a robust way to select the first few.
+max_cycle_id <- min(5, max(data$tidal_cycle_id[-c(1:100)], na.rm = TRUE))
+plot_data <- data[-c(1:100),] %>%
+  dplyr::filter(tidal_cycle_id <= max_cycle_id) %>%
+  dplyr::filter(is.na(tide_direction)==FALSE)
+
+# --- 3. Create the plot with colored phases and vertical lines for cycles ---
+ggplot(plot_data, aes(x = date_utc, y = h_downstream)) +
+  # Use geom_rect to highlight the tidal phases
+  geom_rect(
+    aes(xmin = date_utc, xmax = lead(date_utc), ymin = -Inf, ymax = Inf, fill = tide_direction),
+    alpha = 0.3
+  ) +
+  # Add the main water level line
+  geom_line(color = "blue", size = 1) +
+  # Add vertical lines to mark the start of each tidal cycle
+  # geom_vline(
+  #   data = plot_data %>% dplyr::filter(tidal_cycle_id != dplyr::lag(tidal_cycle_id, default = first(tidal_cycle_id))),
+  #   aes(xintercept = date_utc),
+  #   linetype = "dashed",
+  #   color = "red",
+  #   size = 0.5
+  # ) +
+  labs(
+    title = paste("Stroomafwaarts waterpeil voor", max_cycle_id, "getijcycli"),
+    x = "Datum",
+    y = "Stroomafwaarts waterpeil (m)",
+    fill = "Getij"
+  ) +
+  theme_minimal()
+
+```
+
+```{r eval=FALSE}
+as.data.frame(table(data$tide_direction, data$date)) %>%
+  pivot_wider(
+    names_from = Var1, 
+    values_from = Freq) %>%
+  mutate(ratio=Ebb/Flood) %>%
+  summarize(median=median(ratio))
+```
+
+Onder de meeste omstandigheden blijft de getijdestuw op de bodem en wordt het waterpeil enkel geregeld door de bovenste plaat waarbij water enkel over de stuw gaat en niet eronder (62.0 % van de tijd) (Tabel \@ref(tab:stats)).
+In periodes van verhoogd debiet wordt de onderste stuwplaat gebruikt waardoor water voornamelijk onder de stuw gaat (26.8 % van de tijd).
+16.1 % van de tijd gaat er geen water over of onder de stuw en in 4.9 % van de tijd gaat het water zowel over als onder de stuw.
+Water gaat dus voornamelijk ofwel boven de stuw of onder de stuw maar zelden gelijktijdig.
+
+Om vispassage te evalueren werden twee zaken in beschouwing genomen: Contact tussen het stroomopwaarts en stroomafwaarts pand via water en stroomsnelheid.
+Het contact tussen het stroomopwaarts en stroomafwaarts pand is enkel relevant voor vispassage over de stuw.
+Het water kan daar immers traag genoeg stromen maar als de stuw hoger staat dan het stroomafwaarts peil dan is het stroomopwaarts pand alsnog niet bereikbaar.
+Voor water dat onder de stuw gaat is dat geen probleem want watercontact is gegarandeerd van het moment dat de stuw open gaat langs onder.
+Voor beide opties, boven en onder de stuw, is stroomsnelheid wel belangrijk.
+Vispassage wordt mogelijk geacht wanneer de stroming waartegen vissen zich moeten verzetten minder dan 1 m/s is.
+Als er watercontact is dan spreken we in dit rapport van bereikbaarheid.
+Als er watercontact is en de stroomsnelheid is opzwembaar dan spreken we in dit rapport van passeerbaarheid.
+
+Indien er water over de stuw gaat dan is in 41.2 % van de tijd, het stroomopwaarts pand bereikbaar (i.e. opzwembaar indien stroomsnelheid niet limiterend zou zijn) (Tabel \@ref(tab:stats) en Fig.
+\@ref(fig:puntenoverber)).
+Indien er water over de stuw gaat dan is in 11.3 % van de tijd, de getijstuw passeerbaar (i.e. opzwembaar waarbij stroomsnelheid limiterend is) (Tabel \@ref(tab:stats) en Fig.
+\@ref(fig:puntenover)).
+Indien er water onder de stuw gaat dan is in 30.9 % van de tijd, de getijstuw passeerbaar (i.e. opzwembaar waarbij stroomsnelheid limiterend is) (Tabel \@ref(tab:stats)en Fig.
+\@ref(fig:puntenonder)).
+
+```{r stats}
+source("./code/functions/analyze_flow_and_passage.R")
+
+# --- Execute the function on the sample data ---
+results_df <- analyze_flow_and_passage(data)
+
+# Print the results
+results_df %>% kable(caption="Statistieken van debiet en potentieel voor vispassage")
+```
+
+```{r puntenoverber, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterstroomsnelheid over de stuw met onderscheid tussen bereikbaar en niet-bereikbaar."}
+ggplot(data %>% dplyr::filter(V_o < 8), aes(x = date_utc)) +
+  geom_point(aes(y = V_o, color = bereikbaar_stroomopwaarts_over_stuw, group = bereikbaar_stroomopwaarts_over_stuw)) +
+  labs(
+    y = "Stroomsnelheid (m/s)", 
+    x = "Tijd", 
+    color = "Bereikbaar over stuw?"
+  ) +
+  scale_color_manual(values = c("no" = "red", "yes" = "green")) +  
+  theme_minimal(base_size = 17) +
+  theme(
+    legend.position = "bottom"  # move legend below
+  )
+```
+
+```{r puntenover, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterstroomsnelheid over de stuw met onderscheid tussen passeerbaar en niet-passeerbaar."}
+ggplot(data %>% dplyr::filter(V_o < 8), aes(x = date_utc)) +
+  geom_point(aes(y = V_o, color = passeerbaar_stroomopwaarts_over_stuw, group = passeerbaar_stroomopwaarts_over_stuw)) +
+  labs(
+    y = "Stroomsnelheid (m/s)", 
+    x = "Tijd", 
+    color = "Passeerbaar over stuw?"
+  ) +
+  scale_color_manual(values = c("no" = "red", "yes" = "green")) +  
+  theme_minimal(base_size = 17) +
+  theme(
+    legend.position = "bottom"  # move legend below
+  )
+```
+
+```{r puntenonder, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterstroomsnelheid onder de stuw met onderscheid tussen passeerbaar en niet-passeerbaar."}
+ggplot(data %>% dplyr::filter(V_o < 8), aes(x = date_utc)) +
+  geom_point(aes(y = V_u, color = passeerbaar_stroomopwaarts_onder_stuw, group = passeerbaar_stroomopwaarts_onder_stuw)) +
+  labs(
+    y = "Stroomsnelheid (m/s)", 
+    x = "Tijd", 
+    color = "Passeerbaar onder stuw?"
+  ) +
+  scale_color_manual(values = c("no" = "red", "yes" = "green")) +  
+  theme_minimal(base_size = 17) +
+  theme(
+    legend.position = "bottom"  # move legend below
+  )
+```
+
+```{r eval=FALSE}
+data %>%
+  # Filter out NA rows from smoothing and slack periods
+  dplyr::filter(!is.na(tidal_cycle_id), !is.na(tide_direction)) %>%
+  # --- Key Change: Filter out the first and last tidal cycle ID ---
+  dplyr::filter(tidal_cycle_id != min(tidal_cycle_id, na.rm = TRUE) &
+         tidal_cycle_id != max(tidal_cycle_id, na.rm = TRUE)) %>%
+  group_by(tidal_cycle_id, tide_direction) %>%
+  summarise(
+    total_time_in_phase = n(),
+    flow_over = sum(Q_o > 0, na.rm = TRUE),
+    flow_under = sum(Q_u > 0, na.rm = TRUE),
+    no_flow = sum(Q_o <= 0 & Q_u <= 0, na.rm = TRUE),
+    both_flow = sum((Q_o > 0 & Q_u > 0), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  # Calculate percentages for each phase within each cycle
+  mutate(
+    pct_flow_over = flow_over / total_time_in_phase * 100,
+    pct_flow_under = flow_under / total_time_in_phase * 100,
+    pct_no_flow = no_flow / total_time_in_phase * 100,
+    pct_both_flow = both_flow / total_time_in_phase * 100
+  ) %>%
+  pivot_longer(
+    cols = starts_with("pct_"),
+    names_to = "metric_type",
+    values_to = "percentage"
+  ) %>%
+  group_by(tide_direction, metric_type) %>%
+  summarise(
+    mean = round(mean(percentage, na.rm = TRUE), 1),
+    median = round(median(percentage, na.rm = TRUE), 1),
+    .groups = "drop"
+  )
+```
+
+```{r}
+data %>%
+  # Filter out NA rows from smoothing and slack periods
+  dplyr::filter(!is.na(tidal_cycle_id), !is.na(tide_direction)) %>%
+  # --- Key Change: Filter out the first and last tidal cycle ID ---
+  dplyr::filter(tidal_cycle_id != min(tidal_cycle_id, na.rm = TRUE) &
+         tidal_cycle_id != max(tidal_cycle_id, na.rm = TRUE)) %>%
+  group_by(tidal_cycle_id, tide_direction) %>%
+  summarise(
+    total_time_in_phase = n(),
+    # New calculations for positive and negative discharge
+    flow_over_pos = sum(Q_o > 0, na.rm = TRUE),
+    flow_over_neg = sum(Q_o < 0, na.rm = TRUE),
+    flow_under_pos = sum(Q_u > 0, na.rm = TRUE),
+    flow_under_neg = sum(Q_u < 0, na.rm = TRUE),
+    # Remaining metrics
+    no_flow = sum(Q_o <= 0 & Q_u <= 0, na.rm = TRUE),
+    both_flow = sum((Q_o > 0 & Q_u > 0), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  # Calculate percentages for each phase within each cycle
+  mutate(
+    water_stroomt_over_stroomafwaarts = flow_over_pos / total_time_in_phase * 100,
+    water_stroomt_over_stroomopwaarts = flow_over_neg / total_time_in_phase * 100,
+    water_stroomt_onder_stroomafwaarts = flow_under_pos / total_time_in_phase * 100,
+    water_stroomt_onder_stroomopwaarts = flow_under_neg / total_time_in_phase * 100,
+    water_stroomt_niet = no_flow / total_time_in_phase * 100,
+    water_stroomt_over_en_onder = both_flow / total_time_in_phase * 100
+  )  %>%
+# 3. Calculate the average and median percentages across all tidal cycles
+  pivot_longer(
+    cols = starts_with("water_"),
+    names_to = "Beschrijving",
+    values_to = "Percentage"
+  ) %>%
+  group_by(tide_direction, Beschrijving) %>%
+  summarise(
+    Gemiddelde = round(mean(Percentage, na.rm = TRUE), 1),
+    Mediaan = round(median(Percentage, na.rm = TRUE), 1),
+    .groups = "drop"
+  ) %>% 
+  kable()
+```
+
+```{r}
+source("./code/functions/plot_tidal_cycle_analysis_combined.R")
+# Call the function for a specific tidal cycle, for example, cycle 2.
+```
+
+Op 15 januari 2024 was het business as usual met de bovenste schuif die naar omhoog wordt geschoven als het stroomafwaarts waterpeil het stroomopwaarts streefpeil van 5.77 m bereikt.
+Afhankelijk van de bovenafvoer neemt het stroomopwaarts peil dan meer of minder toe.
+Net voor en net na de werking van de bovenste schuif is er dikwijls een kort venster voor vispassage doordat de stroomsnelheid niet te hoog is.
+
+```{r tideplot20240115, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterpeil en stuwwerking op 15 januari 2024."}
+plot_tidal_cycle_analysis_combined(data, chosen_date = as.POSIXct("2024-01-15", tz = "UTC"))
+```
+
+Op 22 maart 2024 bleef de onderste schuif op de bodem staan waardoor er geen stroming was onder de schuif en passage enkel mogelijk kon zijn over de stuw (Fig. \@ref(fig:tideplot20240322)).
+Voor de eerste getijcyclus van 22 maart stond de bovenkant van de bovenste schuif op 5.35 meteren water stroomde aanvankelijk over de stuw in stroomafwaartse richting.
+Eens het stijgende stroomafwaartse waterpeil de hoogte van de stuw had bereikt stroomde het water in stroomopwaartse richting tot het tij keerde.
+Vispassage was mogelijk tot 20 minuten na het keren van het tij, daarna werd de stroomsnelheid te hoog voor stroomopwaartse visbeweging.
+Gedurende de tweede getijcyclus die dag werd de bovenste schuif wel geactiveerd bij vloed en meerbepaald net voor het stroomafwaarts peil het stroomopwaarts peil zou overschreden hebben.
+De bovenste schuif schoof naar omhoog tot boven het hoogste stroomafwaarts waterpeil van die dag waardoor er gedurende meer dan zes uur geen water over of onder de stuw kon en er dus ook geen visbeweging mogelijk was.
+Ongeveer twee uur na hoogwater zakte de bovenste schuif opnieuw waardoor het stroomopwaarts peil ook begon te dalen.
+Stroomopwaartse migratie over de stuw was dan voor enkele minuten mogelijk.
+De stroomsnelheid werd echter snel te hoog om nog vispassage mogelijk te maken.
+
+```{r tideplot20240322, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterpeil en stuwwerking op 22 maart 2024."}
+plot_tidal_cycle_analysis_combined(data, chosen_date = as.POSIXct("2024-03-22", tz = "UTC"))
+```
+
+Op 5 januari stond de onderste schuif constant open wat leidde tot een aanzienlijke periode waarin vispassage onder de stuw mogelijk was (Fig. \@ref(fig:tideplot20240105)).
+Water kon ongehinderd stromen tot ongeveer 16h (wat ook te zien is aan het minimale verschil tussen stroomopwaarts en stroomafwaarts peil in die periode).
+Na 16h werd de onderste schuif naar beneden geschoven waardoor het stroomopwaartse peil meer toenam dan eerder op de dag en waardoor de stroomsnelheid onder de stuw aanzienlijk toenam.
+Na de kentering van het getij zorgde het vloedregime echter weer voor een gunstig regime voor stroomopwaartse migratie.
+
+```{r tideplot20240105, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterpeil en stuwwerking op 5 januari 2024."}
+plot_tidal_cycle_analysis_combined(data, chosen_date = as.POSIXct("2024-01-05", tz = "UTC"))
+```
+
+Op 8 januari werd de onderste schuif opnieuw geopend maar in tegenstelling tot 5 januari stond de schuif niet heel de dag open en was de opening veel kleiner (Fig. \@ref(fig:tideplot20240108)).
+Daardoor bleef het stroomafwaarts peil altijd lager dan de bovenkant van de stuw en was er dus geen sprake van vrije stroming.
+De momenten dat de stuw vispasseerbaar waren, waren dan ook zeer beperkt.
+Enkel rond de kentering wanneer wat water naar binnen kon stromen en het verschil tussen stroomopwaarts en stroomafwaarts peil minder dan 15 cm was, was vispassage mogelijk.
+
+```{r tideplot20240108, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterpeil en stuwwerking op 8 januari 2024."}
+plot_tidal_cycle_analysis_combined(data, chosen_date = as.POSIXct("2024-01-08", tz = "UTC"))
+```
+
 ## Tijdsaandeel bereikbaarheid en passeerbaarheid
 
-```{r fig.width=12, fig.height=16, out.width='100%', fig.align='center'}
+```{r fig.width=12, fig.height=8, out.width='100%', fig.align='center'}
 data %>%
   pivot_longer(
     cols = matches("^(bereikbaar|passeerbaar)_(via_)?(stroomopwaarts|stroomafwaarts)?"),
@@ -634,204 +930,7 @@ data %>%
   )
 ```
 
-## Parameteranalyse
-
-```{r correlation-plot, message=FALSE, warning=FALSE}
-# Select only explanatory variables
-vars <- c("h_downstream", "h_upstream", "h_o", "sluice_opening", "Q_total_waterinfo")
-
-# Compute correlation matrix (pairwise complete obs to handle NAs)
-cor_mat <- cor(data[vars], use = "pairwise.complete.obs", method = "pearson")
-
-# Plot
-corrplot(cor_mat, method = "color", type = "upper",
-         addCoef.col = "black", # add correlation values
-         tl.col = "black", tl.srt = 45, number.cex = 0.7)
-
-```
-
-### Stroomopwaartse passeerbaarheid over de stuw
-
-#### Beslissingsboom
-
-```{r roc_over_stuw, fig.width=6, fig.height=5}
-# set.seed(123)
-
-target_var <- "passeerbaar_stroomopwaarts_over_stuw"
-
-# Voorbereiden
-df_bal <- data %>%
-  dplyr::filter(.data[[target_var]] %in% c("yes", "no")) %>%
-  mutate(target = factor(.data[[target_var]], levels = c("no", "yes"))) %>%
-  select(target, starts_with("h_"), starts_with("Q_"), sluice_opening, -Q_total, -Q_o, -Q_u) %>%
-  group_by(target) %>%
-  group_modify(~ slice_sample(.x, n = min(table(data[[target_var]])[c("yes", "no")]))) %>%
-  ungroup()
-
-# Split in train/test
-split <- initial_split(df_bal, prop = 0.7, strata = target)
-train_data <- training(split)
-test_data <- testing(split)
-
-# Train model
-model <- rpart(target ~ ., data = train_data, method = "class", cp = 0.01, minbucket = 100)
-
-rpart.plot(model)
-
-# Predict probabilities
-pred_probs <- predict(model, test_data, type = "prob")[, "yes"]
-pred_class <- predict(model, test_data, type = "class")
-
-# Combineer met testdata
-pred_df <- bind_cols(test_data, .pred_yes = pred_probs)
-
-# Bereken ROC
-roc_df <- yardstick::roc_curve(pred_df, truth = target, .pred_yes)
-
-# Plot
-autoplot(roc_df) +
-  ggtitle(paste("ROC-curve voor:", target_var)) +
-  theme_minimal(base_size = 14)
-
-cm <- confusionMatrix(pred_class, test_data$target, positive = "yes")
-cm
-
-ggplot(pred_df, aes(x = .pred_yes, fill = target)) +
-  geom_histogram(position = "stack", alpha = 0.5, bins = 30)
-
-# Suppose you have:
-# y_true = actual labels (factor with levels "no", "yes")
-# y_prob = predicted probability for "yes" class
-
-y_true <- test_data$target
-y_prob <- pred_probs
-
-roc_obj <- roc(y_true, y_prob, levels = c("no", "yes"))
-
-# Plot ROC
-plot(roc_obj, col = "#1c61b6", lwd = 2, main = "ROC Curve with Threshold = 0.5 Marked")
-
-# Find sensitivity/specificity at threshold 0.5
-coords_05 <- coords(roc_obj, x = 0.5, input = "threshold", ret = c("specificity", "sensitivity"))
-
-# Add point for threshold = 0.5
-points(1 - coords_05["specificity"], coords_05["sensitivity"], 
-       pch = 19, col = "red", cex = 1.5)
-
-text(1 - coords_05["specificity"], coords_05["sensitivity"], 
-     labels = "Threshold = 0.5", pos = 4, col = "red")
-```
-
-#### Random forest
-
-```{r}
-target_var <- "passeerbaar_stroomopwaarts_over_stuw"
-
-# Filter to rows with no missing predictor values
-df_train <- data %>%
-  dplyr::filter(.data[[target_var]] %in% c("yes", "no")) %>%
-  mutate(target = factor(.data[[target_var]], levels = c("no", "yes"))) %>%
-  filter(!is.na(h_downstream), !is.na(h_upstream), !is.na(h_o),
-         !is.na(sluice_opening), !is.na(Q_total_waterinfo),
-         !is.na(passeerbaar_stroomopwaarts_over_stuw)) %>%
-  group_by(target) %>%
-  group_modify(~ slice_sample(.x, n = min(table(data[[target_var]])[c("yes", "no")]))) %>%
-  ungroup()
-
-set.seed(42)
-rf_model <- randomForest(
-  target ~ h_o + sluice_opening + h_downstream + h_upstream + Q_total_waterinfo,
-  data = df_train,
-  ntree = 500,
-  mtry = 3,
-  importance = TRUE
-)
-
-print(rf_model)
-
-# Create grid
-predict_grid <- expand.grid(
-  h_downstream      = seq(min(df_train$h_downstream), max(df_train$h_downstream), length.out = 10),
-  h_upstream        = seq(min(df_train$h_upstream), max(df_train$h_upstream), length.out = 10),
-  h_o               = seq(min(df_train$h_o), max(df_train$h_o), length.out = 10),
-  sluice_opening    = seq(min(df_train$sluice_opening), max(df_train$sluice_opening), length.out = 10),
-  Q_total_waterinfo = seq(min(df_train$Q_total_waterinfo), max(df_train$Q_total_waterinfo), length.out = 10))
-
-predict_grid$prob_yes <- predict(rf_model, newdata = predict_grid, type = "prob")[, "yes"]
-```
-
-```{r}
-vars <- c("h_downstream", "h_upstream", "h_o", "sluice_opening", "Q_total_waterinfo")
-pairs <- combn(vars, 2, simplify = FALSE)
-
-# 1. Bepaal de globale min/max van prob_yes voor een consistente kleurschaal
-global_min <- min(predict_grid$prob_yes, na.rm = TRUE)
-global_max <- max(predict_grid$prob_yes, na.rm = TRUE)
-
-# 2. Maak alle plots
-plots <- map(pairs, function(p) {
-  ggplot(predict_grid, aes_string(x = p[1], y = p[2], fill = "prob_yes")) +
-    geom_tile() +
-    scale_fill_viridis_c(name = "P(yes)", limits = c(global_min, global_max)) +
-    labs(
-      title = paste("Predicted passability probability\n(stroomopwaarts over stuw)"),
-      subtitle = paste(p[1], "vs", p[2]),
-      x = p[1],
-      y = p[2]
-    ) +
-    theme_minimal(base_size = 14) +
-    theme(plot.subtitle = element_text(face = "italic"))
-})
-
-# 3. Print plots apart in RMarkdown
-for (pl in plots) {
-  print(pl)
-}
-```
-
-```{r eval=FALSE, warning=FALSE}
-# Minimale waterhoogte boven stuw voor stroomopwaartse passage over stuw
-data_ho <- data %>% dplyr::filter(h_upstream!=h_downstream)
-
-ho_results <- mapply(estimate_parameters_with_solver_to_optimize_vo, 
-                            Q_total = data_ho$Q_total_waterinfo, 
-                            V_o_target = 0.99,
-                            h_up = data_ho$h_upstream,
-                            h_down = data_ho$h_downstream, 
-                            #h_u = data_ho$sluice_opening,
-                            h_u = 0, 
-                            b = 17, 
-                            SIMPLIFY = FALSE)
-
-ho_results_df <- map_dfr(ho_results, as_tibble)
-data_ho <- cbind(data_ho, ho_results_df)
-```
-
-```{r eval=FALSE}
-# Create the plot using ggplot2
-ggplot(data_ho, aes(x = h_o, y = h_o_required)) +
-  # Add a horizontal line for the constant h_o_required value
-  #geom_hline(yintercept = unique(data_ho$h_o_required), linetype = "solid", color = "blue", size = 1) +
-  
-  # Add a 1:1 reference line
-  geom_abline(intercept = 0, slope = 1, linetype = "dashed", color = "gray", size = 0.5) +
-  
-  # Plot the data points, with color determined by the "passeerbaar" variable
-  geom_point(aes(color = passeerbaar_stroomopwaarts_over_stuw), size = 3) +
-  
-  # Add labels and a title for clarity
-  labs(
-    title = "Comparison of Actual vs. Required Effective Head (h_o)",
-    x = "Actual Effective Head (h_o)",
-    y = "Required Effective Head (h_o_required)",
-    color = "Passage Upstream"
-  ) +
-  
-  # Set a clean theme
-  theme_minimal()
-```
-
-#### Range waterhoogte boven stuw voor stroomopwaartse passage over stuw
+## Range waterhoogte boven stuw voor stroomopwaartse passage over stuw
 
 ```{r eval=FALSE, warning=FALSE}
 data_ho <- data %>% dplyr::filter(h_upstream!=h_downstream)
@@ -848,7 +947,11 @@ ho_results_df <- map_dfr(ho_results, as_tibble)
 
 ```
 
-```{r}
+Hoe hoger het debiet, des te hoger dienen de opening onder de stuw en de waterhoogte boven de stuwkruin te zijn om vispassage over de stuw mogelijk te maken.
+Bij een debiet van 10 m³ en een opening onder de stuw van 0.5 m is vispassage mogelijk vanaf een waterhoogte boven de stuwkruin van 1 m.
+Bij een debiet van 90 m³ en een opening onder de stuw van 0.5 m is vispassage mogelijk vanaf een waterhoogte boven de stuwkruin van meer dan 5 m.
+
+```{r rangebovenstuw, fig.width=12, fig.height=16, out.width='100%', fig.align='center'}
 # Set the parameters for the plots
 V_o_threshold <- 1
 h_up <- 5.0
@@ -905,10 +1008,10 @@ ggplot(plot_data, aes(x = h_u, y = V_o, color = h_o)) +
   geom_hline(yintercept = V_o_threshold, linetype = "dashed", color = "black") +
   facet_wrap(~ Q_total, scales = "free_y") +
   labs(
-    title = "Effect of Sluice Opening on Overflow Velocity for Different Total Discharges (m³/s)",
-    x = "Sluice Gate Opening (m)",
-    y = "Overflow Velocity (m/s)",
-    color = "Effective Head (m)"
+    title = "Effect van opening benedenschuif op stroomsnelheid over de stuw voor verschillende debieten (m³/s)",
+    x = "Opening onder de stuw (m)",
+    y = "Stroomsnelheid over de stuw (m/s)",
+    color = "Waterhoogte boven stuwkruin (m)"
   ) +
   xlim(0,2) +
   theme_minimal()
@@ -935,143 +1038,57 @@ solutions <- find_parameter_combinations_to_optimize_vo(
 print(solutions)
 ```
 
-### Stroomopwaartse passeerbaarheid onder de stuw
+## Range opening onder stuw voor stroomopwaartse passage onder stuw
 
-#### Beslissingsboom
+Vispassage onder de stuw is onafhankelijk van de opening en wordt louter bepaald door het verschil tussen het stroomopwaarts en stroomafwaarts peil.
+Stroomopwaartse vispassage onder de stuw is enkel mogelijk indien het verschil tussen stroomopwaarts en stroomafwaarts peil minder dan 14 cm bedraagt.
+Bij vrije stroming is in 76.3 % van de gevallen de stuw passeerbaar langs onderen.
 
-```{r roc_onder_stuw, fig.width=6, fig.height=5}
-# set.seed(123)
+```{r rangeonderstuw, fig.width=12, fig.height=16, out.width='100%', fig.align='center'}
+# Set the parameters for the plots
+b <- 17
+C_d <- 0.6
+g <- 9.81
 
-target_var <- "passeerbaar_stroomopwaarts_onder_stuw"
+# Define a range for the head difference on the x-axis
+# (h_up - h_down) can range from 0 up to a reasonable maximum
+head_difference_range <- seq(from = 0, to = 5.0, length.out = 100)
 
-# Voorbereiden
-df_bal <- data %>%
-  dplyr::filter(.data[[target_var]] %in% c("yes", "no")) %>%
-  mutate(target = factor(.data[[target_var]], levels = c("no", "yes"))) %>%
-  select(target, starts_with("h_"), starts_with("Q_"), sluice_opening, -Q_total, -Q_o, -Q_u) %>%
-  group_by(target) %>%
-  group_modify(~ slice_sample(.x, n = min(table(data[[target_var]])[c("yes", "no")]))) %>%
-  ungroup()
+# Define the core underflow velocity calculation function
+get_vu <- function(head_diff) {
+  if (head_diff <= 0) return(NA_real_)
+  
+  # The formula is simplified since h_up and h_down are not separate variables
+  vu_calc <- C_d * sqrt(2 * g * head_diff)
+  return(vu_calc)
+}
 
-# Split in train/test
-split <- initial_split(df_bal, prop = 0.7, strata = target)
-train_data <- training(split)
-test_data <- testing(split)
-
-# Train model
-model <- rpart(target ~ ., data = train_data, method = "class", cp = 0.01, minbucket = 200)
-
-rpart.plot(model)
-
-# Predict probabilities
-pred_probs <- predict(model, test_data, type = "prob")[, "yes"]
-pred_class <- predict(model, test_data, type = "class")
-
-# Combineer met testdata
-pred_df <- bind_cols(test_data, .pred_yes = pred_probs)
-
-# Bereken ROC
-roc_df <- yardstick::roc_curve(pred_df, truth = target, .pred_yes)
-
-# Plot
-autoplot(roc_df) +
-  ggtitle(paste("ROC-curve voor:", target_var)) +
-  theme_minimal(base_size = 14)
-
-cm <- confusionMatrix(pred_class, test_data$target, positive = "yes")
-cm
-
-ggplot(pred_df, aes(x = .pred_yes, fill = target)) +
-  geom_histogram(position = "stack", alpha = 0.5, bins = 50)
-
-# Suppose you have:
-# y_true = actual labels (factor with levels "no", "yes")
-# y_prob = predicted probability for "yes" class
-
-y_true <- test_data$target
-y_prob <- pred_probs
-
-roc_obj <- roc(y_true, y_prob, levels = c("no", "yes"))
-
-# Plot ROC
-plot(roc_obj, col = "#1c61b6", lwd = 2, main = "ROC Curve with Threshold = 0.5 Marked")
-
-# Find sensitivity/specificity at threshold 0.5
-coords_05 <- coords(roc_obj, x = 0.5, input = "threshold", ret = c("specificity", "sensitivity"))
-
-# Add point for threshold = 0.5
-points(1 - coords_05["specificity"], coords_05["sensitivity"], 
-       pch = 19, col = "red", cex = 1.5)
-
-text(1 - coords_05["specificity"], coords_05["sensitivity"], 
-     labels = "Threshold = 0.5", pos = 4, col = "red")
-```
-
-#### Random forest
-
-```{r}
-target_var <- "passeerbaar_stroomopwaarts_onder_stuw"
-
-# Filter to rows with no missing predictor values
-df_train <- data %>%
-  dplyr::filter(.data[[target_var]] %in% c("yes", "no")) %>%
-  mutate(target = factor(.data[[target_var]], levels = c("no", "yes"))) %>%
-  filter(!is.na(h_downstream), !is.na(h_upstream), !is.na(h_o),
-         !is.na(sluice_opening), !is.na(Q_total_waterinfo),
-         !is.na(passeerbaar_stroomopwaarts_over_stuw)) %>%
-  group_by(target) %>%
-  group_modify(~ slice_sample(.x, n = min(table(data[[target_var]])[c("yes", "no")]))) %>%
-  ungroup()
-
-set.seed(42)
-rf_model <- randomForest(
-  target ~ h_o + sluice_opening + h_downstream + h_upstream + Q_total_waterinfo,
-  data = df_train,
-  ntree = 500,
-  mtry = 3,
-  importance = TRUE
+# Create a data frame for plotting
+plot_data <- data.frame(
+  head_difference = head_difference_range,
+  V_u = sapply(head_difference_range, get_vu)
 )
 
-print(rf_model)
+# Plot the results
+ggplot(plot_data, aes(x = head_difference, y = V_u)) +
+  geom_line(size = 1, color = "blue") +
+  labs(
+    title = "Underflow Velocity vs. Head Difference",
+    x = "Head Difference (h_up - h_down, in m)",
+    y = "Underflow Velocity (V_u, in m/s)"
+  ) +
+  theme_minimal()
 
-# Create grid
-predict_grid <- expand.grid(
-  h_downstream      = seq(min(df_train$h_downstream), max(df_train$h_downstream), length.out = 10),
-  h_upstream        = seq(min(df_train$h_upstream), max(df_train$h_upstream), length.out = 10),
-  h_o               = seq(min(df_train$h_o), max(df_train$h_o), length.out = 10),
-  sluice_opening    = seq(min(df_train$sluice_opening), max(df_train$sluice_opening), length.out = 10),
-  Q_total_waterinfo = seq(min(df_train$Q_total_waterinfo), max(df_train$Q_total_waterinfo), length.out = 10))
-
-predict_grid$prob_yes <- predict(rf_model, newdata = predict_grid, type = "prob")[, "yes"]
 ```
 
-```{r}
-vars <- c("h_downstream", "h_upstream", "h_o", "sluice_opening", "Q_total_waterinfo")
-pairs <- combn(vars, 2, simplify = FALSE)
+```{r eval=FALSE}
+# Parameters from the immersive artifact
+C_d <- 0.6
+g <- 9.81
 
-# 1. Bepaal de globale min/max van prob_yes voor een consistente kleurschaal
-global_min <- min(predict_grid$prob_yes, na.rm = TRUE)
-global_max <- max(predict_grid$prob_yes, na.rm = TRUE)
+# Calculate the head difference for an underflow velocity of 1 m/s
+head_diff <- 1 / (C_d^2 * 2 * g)
 
-# 2. Maak alle plots
-plots <- map(pairs, function(p) {
-  ggplot(predict_grid, aes_string(x = p[1], y = p[2], fill = "prob_yes")) +
-    geom_tile() +
-    scale_fill_viridis_c(name = "P(yes)", limits = c(global_min, global_max)) +
-    labs(
-      title = paste("Predicted passability probability\n(stroomopwaarts over stuw)"),
-      subtitle = paste(p[1], "vs", p[2]),
-      x = p[1],
-      y = p[2]
-    ) +
-    theme_minimal(base_size = 14) +
-    theme(plot.subtitle = element_text(face = "italic"))
-})
-
-# 3. Print plots apart in RMarkdown
-for (pl in plots) {
-  print(pl)
-}
+# Print the result
+print(paste("The head difference for an underflow velocity of 1 m/s is:", round(head_diff, 4), "m"))
 ```
-
-#### Range opening onder stuw voor stroomopwaartse passage onder stuw
