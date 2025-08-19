@@ -6,4 +6,372 @@ INBOmd::references(appendix = TRUE)
 
 # Eerste hoofdstuk van de bijlage
 
-Inhoud van de eerste bijlage
+```{r}
+source("./code/not_functions/libraries.R")
+```
+
+```{r eval=FALSE, fig.width=12, fig.height=8, out.width='100%', fig.align='center'}
+data %>%
+  mutate(date = as.Date(date_utc)) %>%
+  group_by(date) %>%
+  summarise(
+    up_onder.Stuw   = sum(passeerbaar_stroomopwaarts_onder_stuw == "yes", na.rm = TRUE)/288,
+    up_over.Stuw    = sum(passeerbaar_stroomopwaarts_over_stuw == "yes", na.rm = TRUE)/288,
+    down_onder.Stuw = sum(passeerbaar_stroomafwaarts_onder_stuw == "yes", na.rm = TRUE)/288,
+    down_over.Stuw   = sum(passeerbaar_stroomafwaarts_over_stuw == "yes", na.rm = TRUE)/288
+  ) %>%
+  pivot_longer(
+    cols = -date,
+    names_to = "route_direction",
+    values_to = "count"
+  ) %>%
+  separate(route_direction, into = c("direction", "route"), sep = "_", extra = "merge") %>%
+  mutate(
+    direction = recode(direction, "up" = "Stroomopwaarts", "down" = "Stroomafwaarts"),
+    route = str_to_title(route)  # "sluice", "weir"
+  ) %>%
+  ggplot(aes(x = date, y = count, color = interaction(direction, route))) +
+  geom_line() +
+  labs(
+    title = "Aandeel passeerbare momenten per dag per richting en route",
+    x = "Datum", y = "Aandeel momenten",
+    color = "Richting × Route"
+  ) + 
+  theme_minimal(base_size = 18)
+```
+
+## Parameteranalyse
+
+```{r correlation-plot, message=FALSE, warning=FALSE}
+# Select only explanatory variables
+vars <- c("h_downstream", "h_upstream", "h_o", "sluice_opening", "Q_total_waterinfo")
+
+# Compute correlation matrix (pairwise complete obs to handle NAs)
+cor_mat <- cor(data[vars], use = "pairwise.complete.obs", method = "pearson")
+
+# Plot
+corrplot(cor_mat, method = "color", type = "upper",
+         addCoef.col = "black", # add correlation values
+         tl.col = "black", tl.srt = 45, number.cex = 0.7)
+
+```
+
+### Stroomopwaartse passeerbaarheid over de stuw
+
+#### Beslissingsboom
+
+```{r roc_over_stuw, fig.width=6, fig.height=5}
+# set.seed(123)
+
+target_var <- "passeerbaar_stroomopwaarts_over_stuw"
+
+# Voorbereiden
+df_bal <- data %>%
+  dplyr::filter(.data[[target_var]] %in% c("yes", "no")) %>%
+  mutate(target = factor(.data[[target_var]], levels = c("no", "yes"))) %>%
+  select(target, starts_with("h_"), starts_with("Q_"), sluice_opening, -Q_total, -Q_o, -Q_u) %>%
+  group_by(target) %>%
+  group_modify(~ slice_sample(.x, n = min(table(data[[target_var]])[c("yes", "no")]))) %>%
+  ungroup()
+
+# Split in train/test
+split <- initial_split(df_bal, prop = 0.7, strata = target)
+train_data <- training(split)
+test_data <- testing(split)
+
+# Train model
+model <- rpart(target ~ ., data = train_data, method = "class", cp = 0.01, minbucket = 100)
+
+rpart.plot(model)
+
+# Predict probabilities
+pred_probs <- predict(model, test_data, type = "prob")[, "yes"]
+pred_class <- predict(model, test_data, type = "class")
+
+# Combineer met testdata
+pred_df <- bind_cols(test_data, .pred_yes = pred_probs)
+
+# Bereken ROC
+roc_df <- yardstick::roc_curve(pred_df, truth = target, .pred_yes)
+
+# Plot
+autoplot(roc_df) +
+  ggtitle(paste("ROC-curve voor:", target_var)) +
+  theme_minimal(base_size = 14)
+
+cm <- confusionMatrix(pred_class, test_data$target, positive = "yes")
+cm
+
+ggplot(pred_df, aes(x = .pred_yes, fill = target)) +
+  geom_histogram(position = "stack", alpha = 0.5, bins = 30)
+
+# Suppose you have:
+# y_true = actual labels (factor with levels "no", "yes")
+# y_prob = predicted probability for "yes" class
+
+y_true <- test_data$target
+y_prob <- pred_probs
+
+roc_obj <- roc(y_true, y_prob, levels = c("no", "yes"))
+
+# Plot ROC
+plot(roc_obj, col = "#1c61b6", lwd = 2, main = "ROC Curve with Threshold = 0.5 Marked")
+
+# Find sensitivity/specificity at threshold 0.5
+coords_05 <- coords(roc_obj, x = 0.5, input = "threshold", ret = c("specificity", "sensitivity"))
+
+# Add point for threshold = 0.5
+points(1 - coords_05["specificity"], coords_05["sensitivity"], 
+       pch = 19, col = "red", cex = 1.5)
+
+text(1 - coords_05["specificity"], coords_05["sensitivity"], 
+     labels = "Threshold = 0.5", pos = 4, col = "red")
+```
+
+#### Random forest
+
+```{r}
+target_var <- "passeerbaar_stroomopwaarts_over_stuw"
+
+# Filter to rows with no missing predictor values
+df_train <- data %>%
+  dplyr::filter(.data[[target_var]] %in% c("yes", "no")) %>%
+  mutate(target = factor(.data[[target_var]], levels = c("no", "yes"))) %>%
+  dplyr::filter(!is.na(h_downstream), !is.na(h_upstream), !is.na(h_o),
+         !is.na(sluice_opening), !is.na(Q_total_waterinfo),
+         !is.na(passeerbaar_stroomopwaarts_over_stuw)) %>%
+  group_by(target) %>%
+  group_modify(~ slice_sample(.x, n = min(table(data[[target_var]])[c("yes", "no")]))) %>%
+  ungroup()
+
+set.seed(42)
+rf_model <- randomForest(
+  target ~ h_o + sluice_opening + h_downstream + h_upstream + Q_total_waterinfo,
+  data = df_train,
+  ntree = 500,
+  mtry = 3,
+  importance = TRUE
+)
+
+print(rf_model)
+
+# Create grid
+predict_grid <- expand.grid(
+  h_downstream      = seq(min(df_train$h_downstream), max(df_train$h_downstream), length.out = 10),
+  h_upstream        = seq(min(df_train$h_upstream), max(df_train$h_upstream), length.out = 10),
+  h_o               = seq(min(df_train$h_o), max(df_train$h_o), length.out = 10),
+  sluice_opening    = seq(min(df_train$sluice_opening), max(df_train$sluice_opening), length.out = 10),
+  Q_total_waterinfo = seq(min(df_train$Q_total_waterinfo), max(df_train$Q_total_waterinfo), length.out = 10))
+
+predict_grid$prob_yes <- predict(rf_model, newdata = predict_grid, type = "prob")[, "yes"]
+```
+
+```{r}
+vars <- c("h_downstream", "h_upstream", "h_o", "sluice_opening", "Q_total_waterinfo")
+pairs <- combn(vars, 2, simplify = FALSE)
+
+# 1. Bepaal de globale min/max van prob_yes voor een consistente kleurschaal
+global_min <- min(predict_grid$prob_yes, na.rm = TRUE)
+global_max <- max(predict_grid$prob_yes, na.rm = TRUE)
+
+# 2. Maak alle plots
+plots <- map(pairs, function(p) {
+  ggplot(predict_grid, aes_string(x = p[1], y = p[2], fill = "prob_yes")) +
+    geom_tile() +
+    scale_fill_viridis_c(name = "P(yes)", limits = c(global_min, global_max)) +
+    labs(
+      title = paste("Predicted passability probability\n(stroomopwaarts over stuw)"),
+      subtitle = paste(p[1], "vs", p[2]),
+      x = p[1],
+      y = p[2]
+    ) +
+    theme_minimal(base_size = 14) +
+    theme(plot.subtitle = element_text(face = "italic"))
+})
+
+# 3. Print plots apart in RMarkdown
+for (pl in plots) {
+  print(pl)
+}
+```
+
+```{r eval=FALSE, warning=FALSE}
+# Minimale waterhoogte boven stuw voor stroomopwaartse passage over stuw
+data_ho <- data %>% dplyr::filter(h_upstream!=h_downstream)
+
+ho_results <- mapply(estimate_parameters_with_solver_to_optimize_vo, 
+                            Q_total = data_ho$Q_total_waterinfo, 
+                            V_o_target = 0.99,
+                            h_up = data_ho$h_upstream,
+                            h_down = data_ho$h_downstream, 
+                            #h_u = data_ho$sluice_opening,
+                            h_u = 0, 
+                            b = 17, 
+                            SIMPLIFY = FALSE)
+
+ho_results_df <- map_dfr(ho_results, as_tibble)
+data_ho <- cbind(data_ho, ho_results_df)
+```
+
+```{r eval=FALSE}
+# Create the plot using ggplot2
+ggplot(data_ho, aes(x = h_o, y = h_o_required)) +
+  # Add a horizontal line for the constant h_o_required value
+  #geom_hline(yintercept = unique(data_ho$h_o_required), linetype = "solid", color = "blue", size = 1) +
+  
+  # Add a 1:1 reference line
+  geom_abline(intercept = 0, slope = 1, linetype = "dashed", color = "gray", size = 0.5) +
+  
+  # Plot the data points, with color determined by the "passeerbaar" variable
+  geom_point(aes(color = passeerbaar_stroomopwaarts_over_stuw), size = 3) +
+  
+  # Add labels and a title for clarity
+  labs(
+    title = "Comparison of Actual vs. Required Effective Head (h_o)",
+    x = "Actual Effective Head (h_o)",
+    y = "Required Effective Head (h_o_required)",
+    color = "Passage Upstream"
+  ) +
+  
+  # Set a clean theme
+  theme_minimal()
+```
+
+### Stroomopwaartse passeerbaarheid onder de stuw
+
+#### Beslissingsboom
+
+```{r roc_onder_stuw, fig.width=6, fig.height=5}
+# set.seed(123)
+
+target_var <- "passeerbaar_stroomopwaarts_onder_stuw"
+
+# Voorbereiden
+df_bal <- data %>%
+  dplyr::filter(.data[[target_var]] %in% c("yes", "no")) %>%
+  mutate(target = factor(.data[[target_var]], levels = c("no", "yes"))) %>%
+  select(target, starts_with("h_"), starts_with("Q_"), sluice_opening, -Q_total, -Q_o, -Q_u) %>%
+  group_by(target) %>%
+  group_modify(~ slice_sample(.x, n = min(table(data[[target_var]])[c("yes", "no")]))) %>%
+  ungroup()
+
+# Split in train/test
+split <- initial_split(df_bal, prop = 0.7, strata = target)
+train_data <- training(split)
+test_data <- testing(split)
+
+# Train model
+model <- rpart(target ~ ., data = train_data, method = "class", cp = 0.01, minbucket = 200)
+
+rpart.plot(model)
+
+# Predict probabilities
+pred_probs <- predict(model, test_data, type = "prob")[, "yes"]
+pred_class <- predict(model, test_data, type = "class")
+
+# Combineer met testdata
+pred_df <- bind_cols(test_data, .pred_yes = pred_probs)
+
+# Bereken ROC
+roc_df <- yardstick::roc_curve(pred_df, truth = target, .pred_yes)
+
+# Plot
+autoplot(roc_df) +
+  ggtitle(paste("ROC-curve voor:", target_var)) +
+  theme_minimal(base_size = 14)
+
+cm <- confusionMatrix(pred_class, test_data$target, positive = "yes")
+cm
+
+ggplot(pred_df, aes(x = .pred_yes, fill = target)) +
+  geom_histogram(position = "stack", alpha = 0.5, bins = 50)
+
+# Suppose you have:
+# y_true = actual labels (factor with levels "no", "yes")
+# y_prob = predicted probability for "yes" class
+
+y_true <- test_data$target
+y_prob <- pred_probs
+
+roc_obj <- roc(y_true, y_prob, levels = c("no", "yes"))
+
+# Plot ROC
+plot(roc_obj, col = "#1c61b6", lwd = 2, main = "ROC Curve with Threshold = 0.5 Marked")
+
+# Find sensitivity/specificity at threshold 0.5
+coords_05 <- coords(roc_obj, x = 0.5, input = "threshold", ret = c("specificity", "sensitivity"))
+
+# Add point for threshold = 0.5
+points(1 - coords_05["specificity"], coords_05["sensitivity"], 
+       pch = 19, col = "red", cex = 1.5)
+
+text(1 - coords_05["specificity"], coords_05["sensitivity"], 
+     labels = "Threshold = 0.5", pos = 4, col = "red")
+```
+
+#### Random forest
+
+```{r}
+target_var <- "passeerbaar_stroomopwaarts_onder_stuw"
+
+# Filter to rows with no missing predictor values
+df_train <- data %>%
+  dplyr::filter(.data[[target_var]] %in% c("yes", "no")) %>%
+  mutate(target = factor(.data[[target_var]], levels = c("no", "yes"))) %>%
+  dplyr::filter(!is.na(h_downstream), !is.na(h_upstream), !is.na(h_o),
+         !is.na(sluice_opening), !is.na(Q_total_waterinfo),
+         !is.na(passeerbaar_stroomopwaarts_over_stuw)) %>%
+  group_by(target) %>%
+  group_modify(~ slice_sample(.x, n = min(table(data[[target_var]])[c("yes", "no")]))) %>%
+  ungroup()
+
+set.seed(42)
+rf_model <- randomForest(
+  target ~ h_o + sluice_opening + h_downstream + h_upstream + Q_total_waterinfo,
+  data = df_train,
+  ntree = 500,
+  mtry = 3,
+  importance = TRUE
+)
+
+print(rf_model)
+
+# Create grid
+predict_grid <- expand.grid(
+  h_downstream      = seq(min(df_train$h_downstream), max(df_train$h_downstream), length.out = 10),
+  h_upstream        = seq(min(df_train$h_upstream), max(df_train$h_upstream), length.out = 10),
+  h_o               = seq(min(df_train$h_o), max(df_train$h_o), length.out = 10),
+  sluice_opening    = seq(min(df_train$sluice_opening), max(df_train$sluice_opening), length.out = 10),
+  Q_total_waterinfo = seq(min(df_train$Q_total_waterinfo), max(df_train$Q_total_waterinfo), length.out = 10))
+
+predict_grid$prob_yes <- predict(rf_model, newdata = predict_grid, type = "prob")[, "yes"]
+```
+
+```{r}
+vars <- c("h_downstream", "h_upstream", "h_o", "sluice_opening", "Q_total_waterinfo")
+pairs <- combn(vars, 2, simplify = FALSE)
+
+# 1. Bepaal de globale min/max van prob_yes voor een consistente kleurschaal
+global_min <- min(predict_grid$prob_yes, na.rm = TRUE)
+global_max <- max(predict_grid$prob_yes, na.rm = TRUE)
+
+# 2. Maak alle plots
+plots <- map(pairs, function(p) {
+  ggplot(predict_grid, aes_string(x = p[1], y = p[2], fill = "prob_yes")) +
+    geom_tile() +
+    scale_fill_viridis_c(name = "P(yes)", limits = c(global_min, global_max)) +
+    labs(
+      title = paste("Predicted passability probability\n(stroomopwaarts over stuw)"),
+      subtitle = paste(p[1], "vs", p[2]),
+      x = p[1],
+      y = p[2]
+    ) +
+    theme_minimal(base_size = 14) +
+    theme(plot.subtitle = element_text(face = "italic"))
+})
+
+# 3. Print plots apart in RMarkdown
+for (pl in plots) {
+  print(pl)
+}
+```
