@@ -1,0 +1,45 @@
+# Discussie
+
+## Is stroomopwaartse visbeweging over of onder de getijdestuw mogelijk?
+
+Ja, onder de huidige omstandigheden is stroomopwaartse beweging mogelijk.
+In de studieperiode konden vissen stroomopwaarts bewegen over en onder de stuw voor respectievelijk 6.8 % en 8.2% van de tijd.
+Ter vergelijking, in periodes dat de schuif volledig naar boven is geschoven en water ongehinderd kan stromen (4.1 % van de gevallen) dan is het gedurende 76.3 % van de tijd mogelijk voor vissen om stroomopwaarts te bewegen.
+Onder natuurlijke omstandigheden (i.e. geen getijdestuw) zou het dus negen keer waarschijnlijker zijn dat vissen direct stroomopwaarts kunnen bewegen bij het aanmelden stroomafwaarts.
+
+## Onder welke omstandigheden is stroomopwaartse visbeweging mogelijk?
+
+Stroomopwaartse beweging onder de getijstuw is mogelijk wanneer:
+
+-   Bij gehinderde stroming, het stroomopwaarts waterpeil 14 cm of minder boven het stroomafwaarts peil ligt en de benedenschuif openstaat zodat water onder de stuw kan stromen.
+
+-   Bij vrije stroming (i.e. de schuif staat zo hoog dat water geen hinder ondervindt waardoor stroomopwaarts en stroomafwaarts peil nagenoeg hetzelfde zijn), wanneer het totaal debiet lager ligt dan 133 m³/s.
+
+Stroomopwaartse beweging boven de getijstuw is mogelijk wanneer het stroomafwaarts waterpeil hoger is dan de bovenkant van de bovenste schuif, ongeacht of er sprake is van 'vrije stroming' of niet.
+Puur vrije stroming over de stuw is niet mogelijk omdat de schuiven het water steeds zullen hinderen.
+Stroomopwaartse beweging over de getijstuw is mogelijk wanneer:
+
+-   Bij gehinderde stroming, het waterpeil stroomafwaarts hoger is dan het waterpeil stroomopwaarts of wanneer het waterpeil stroomopwaarts minder dan 4 cm boven de stuwkruin staat.
+
+-   Bij 'vrije stroming' (i.e. de schuif staat zo laag dat water niet over de stuw valt maar stroomt), wanneer het totaal debiet lager ligt dan 14 m³/s.
+
+Visbeweging over de stuw is dus mogelijk, maar zal vooral plaats kunnen grijpen bij eb wanneer stroomafwaarts water over de stuw kan.
+Visbeweging onder de stuw biedt meer mogelijkheden omdat vismigratie mogelijk is bij zowel eb als vloed.
+Bij vloed is het belangrijk om bij gehinderde stroming ervoor te zorgen dat het verschil tussen stroomopwaarts en stroomafwaarts peil minder dan 14 cm bedraagt.
+Bij ongehinderde stroming is vismigratie mogelijk tot en met een totaal debiet van 133 m³/s.
+
+Het is belangrijk om te noteren dat een uniforme stroomsnelheidsdistributie werd veronderstelt doorheen de waterkolom, wat een sterke vereenvoudiging is van de werkelijkheid.
+Daarnaast werd er enkel gewerkt met bestaande gegevens en werden geen simulaties uitgevoerd wat een *biased* inzicht geeft aangezien de stuwwerking gestuurd wordt door de omgevingsomstandigheden en dus niet alle combinaties van omgevingsomstandigheden en stuwwerking-parameters getest konden worden.
+
+## Hoe kan vispassage verbeterd worden?
+
+In eerste instantie genieten *free flowing* condities de voorkeur omdat deze de natuurlijke situatie zoveel mogelijk tegemoet komen.
+In tweede instantie wordt gebruik van de onderste schuif om de stuw te regelen, aangeraden.
+Vispassage over de stuw is sterk gelimiteerd wanneer ervoor wordt gekozen om met de bovenste schuif het waterpeil te regelen.
+Onder *free flowing* condities, gehinderde stroming waarbij water onder de stuw gaat en gehinderde stroming waarbij water over de stuw gaat, omvatte het potentieel tijdsvenster voor stroomopwaartse migratie respectievelijk 76.3 %, 30.9 % en 11.3 % van de tijd.
+
+Zoals eerder vermeld is dit rapport datagedreven en het gebruik van hydraulische formules bleef beperkt.
+Een telemetriestudie die het belang en de mogelijkheden voor stroomopwaartse migratie in kaart brengt in combinatie met een meer diepgaande hydraulische modelstudie zijn aangewezen om tot duidelijk afgelijnde beheersvoorstellen te komen.
+
+In de tussentijd wordt aangeraden om *free flowing* condities aan te houden wanneer dit kan en om, wanneer mogelijk, de onderste schuif naar boven te zetten met een opening van minstens 30 cm tussen de bodem en de bovenkant van de onderste schuif wanneer het stroomopwaarts peil minder dan 14 cm hoger ligt dan het stroomafwaarts peil.
+Dit is gelijkaardig aan het geïmplementeerde voorstel voor stuw 222 op de Dijle in Mechelen [@stevens2010].
