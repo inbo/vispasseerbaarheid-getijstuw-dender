@@ -1,40 +1,143 @@
+```{r}
+source("./code/not_functions/libraries.R")
+```
+
 # Methodologie
 
 ## Gebiedsbeschrijving
 
-De getijstuw in Dendermonde bevindt zich op de Zeeschelde, net stroomafwaarts van de samenvloeiing met de Dender.
-De stuw maakt deel uit van het getijdengebonden deel van de Schelde en ligt binnen een overstromingsgevoelige zone met een uitgesproken estuarien karakter.
+De getijstuw in Dendermonde bevindt zich op de Dender, net stroomopwaarts van de samenvloeiing met de Zeeschelde (Figs. \@ref(fig:fotostuw1) - \@ref(fig:fotostuw4)).
+De stuw ligt ter hoogte van het getijdengebonden deel van de Schelde en ligt binnen een overstromingsgevoelige zone met een uitgesproken estuarien karakter.
 Het omliggende landschap wordt gekenmerkt door brede riviervlaktes, slikken en schorren, en kent sterke wisselingen in waterstand als gevolg van de getijwerking vanuit de Noordzee.
 De Zeeschelde is op deze locatie onderhevig aan een semidiurnaal getij, met gemiddeld twee hoogwaters en twee laagwaters per etmaal.
 De getijstuw reguleert de getij-invloed stroomopwaarts en laat gecontroleerde doorstroming toe richting het binnenland.
-De stuw fungeert als overgangsstructuur tussen het maritiem beïnvloede getijregime en het meer gestabiliseerde waterpeil in de bovenlopen van het riviersysteem.
-Aan de bovenstroomse zijde van de stuw geldt een theoretisch streefpeil van **3,82 meter TAW**, dat als referentiepeil wordt gehanteerd voor het waterbeheer in deze zone.
+De stuw fungeert als overgangsstructuur tussen het estuarien beïnvloede getijregime en het meer gestabiliseerde waterpeil in de bovenlopen van het riviersysteem.
+Aan de bovenstroomse zijde van de stuw geldt een theoretisch streefpeil van **3.82 meter TAW**, dat als referentiepeil wordt gehanteerd voor het waterbeheer in deze zone.
 Dit peil zorgt voor een gecontroleerde opstuwing van het water in de richting van de Dender bovenstrooms van Dendermonde.
-Het handhaven van dit peil is essentieel voor de werking van de stuw en het algemene peilbeheer in het intergetijdengebied.
 De bodemplaat van de stuw ligt op -1.95 meter TAW.
+Sinds eind 2024 is de werking van de stuw volledig geautomatiseerd en dit brengt een aantal wijzigingen met zich mee.
+Zo zou nu de onderste schuif meer geopend worden dan vroeger (communicatie met DVW).
+
+```{r fotostuw1, fig.cap = "Water stroomt bij het einde van vloed over de stuw van de Zeeschelde naar de Dender op 20 februari 2025 om 9:48 (lokale tijd).", fig.show = "hold", out.width = "50%", fig.align = "center"}
+include_graphics(path = "./media/pictures/20250220/20250220_094818.jpg")
+```
+
+```{r fotostuw2, fig.cap = "Zicht op de stuwgeul in stroomafwaartse richting. De samenvloeiing van de Dender met de Zeeschelde is zichtbaar op 20 februari 2025 om 9:48 (lokale tijd).", fig.show = "hold", out.width = "50%", fig.align = "center"}
+include_graphics(path = "./media/pictures/20250220/20250220_094844.jpg")
+```
+
+```{r fotostuw3, fig.cap = "Zicht op de sluisgeul (links) en de stuwgeul (rechts) in stroomopwaartse richting op 20 februari 2025 om 9:49 (lokale tijd).", fig.show = "hold", out.width = "50%", fig.align = "center"}
+include_graphics(path = "./media/pictures/20250220/20250220_094859.jpg")
+```
+
+```{r fotosluis1, fig.cap = "Zicht op de sluisgeul in stroomafwaartse richting op 20 februari 2025 om 9:48 (lokale tijd).", fig.show = "hold", out.width = "50%", fig.align = "center"}
+include_graphics(path = "./media/pictures/20250220/20250220_094852.jpg")
+```
+
+```{r fotostuw4, fig.cap = "Water stroomt bij het begin van vloed over de stuw van de Dender naar de Zeeschelde op 8 september 2025 om 13:40 (lokale tijd).", fig.show = "hold", out.width = "50%", fig.align = "center"}
+include_graphics(path = "./media/pictures/20250908/20250908_134018.jpg")
+```
 
 Het sluisstuwcomplex van Dendermonde bestaat uit een combinatie van een stuwconstructie, een schutsluis en bijhorende infrastructuur voor waterbeheersing.
 Het ontwerp laat een gereguleerde uitwisseling toe tussen de getijdeninvloeden van de Zeeschelde en het bovenstrooms gelegen binnenwaterstelsel van de Dender.
-
 Het complex is opgebouwd uit meerdere functionele zones.
-Centraal bevinden zich de doorstroomopeningen van de stuw, geflankeerd door oeverconstructies en geleidewerken.
-Deze stuwsecties laten gecontroleerde waterafvoer toe in functie van het getij en het bovenstroomse peilbeheer.
-De schutsluis is parallel aan de stuw gelegen en dient voor de doorgang van de scheepvaart.
+Aan de linkerzijde bevinden zich de doorstroomopeningen van de stuw, geflankeerd door oeverconstructies en geleidewerken.
+Deze stuwsecties laten gecontroleerde waterbeweging toe in functie van het getij en het bovenstroomse peilbeheer.
+De schutsluis is parallel aan de stuw gelegen langs rechts en dient voor de doorgang van de scheepvaart.
 Ze verbindt het benedenstroomse getijdeel van de Schelde met het hoger gelegen niet-getijgebonden deel van de Dender.
 
-De **doorsnede B–C** toont een typische dwarsdoorsnede door de stuw.
-De stuw is uitgevoerd met een betonnen onderbouw en verticale stuwschuiven of segmenten, die hydraulisch bediend worden.
-Boven de stuw bevindt zich een stalen bovendorpel waarop de bedieningselementen en brugstructuren rusten.
-De waterlijn varieert afhankelijk van de getijstand en de regeling van de stuwsegmenten.
-Aan de benedenstroomse zijde is een erosiebeschermingslaag aangebracht om bodemscour ten gevolge van valhoogte en stroming te vermijden.
+De dwarsdoorsneden van het complex tonen telkens **links de stuw** en **rechts de schutsluis (**Fig.\@ref(fig:doorsnedeoverzicht), \@ref(fig:doorsnedebc), \@ref(fig:doorsnedede) en \@ref(fig:doorsnedef)**)**.
 
-In de **doorsnede D–E** wordt een langsdoorsnede getoond over een deel van het complex, waarbij zowel de bedieningsconstructie als het waterverloop over de stuw zichtbaar zijn.
-Het verschil in waterpeil tussen boven- en benedenstroomse zijde is goed merkbaar, vooral bij laag tij.
-De doorsnede illustreert eveneens de integratie van geleidewerken en walkanten, wat belangrijk is voor de geleiding van schepen en voor de hydraulische vormgeving van de instroomzones.
+-   **Links** bevindt zich de stuw, opgebouwd uit betonnen funderingen en verticale schuiven die in hoogte verstelbaar zijn.
+    Deze schuiven regelen de doorstroming en stabiliseren het bovenstroomse peil rond **3,82 m TAW**.
+
+-   **Rechts** is de sluis zichtbaar, met de kolk en sluishoofden.
+    Hier worden schepen geschut tussen het hoger gelegen bovenstroomse peil en het variabele benedenstroomse peil dat onder invloed staat van het getij.
+
+De doorsneden tonen ook de verhouding tussen de breedte van de stuw en die van de sluis, en illustreren hoe beide onderdelen parallel in het rivierprofiel zijn ingeplant.
+De meer benedenstroomse doorsnede F geeft daarbij extra inzicht in de uitstromingszone: hier mondt het water vanuit stuw en sluis uit in de Schelde.
+
+De langsdoorsnede A (Fig. \@ref(fig:doorsnedea)) geeft een detailbeeld van de schutsluis zelf.
+In dit profiel zijn de kolk, de sluishoofden en de deuren zichtbaar.
+De tekening maakt het verschil in waterpeil duidelijk tussen de bovenstroomse zijde (opgestuwd rond 3,82 m TAW) en de benedenstroomse zijde (onderhevig aan het getij).
+Het schutproces gebeurt via inlaten in de sluishoofden, zodat het kolkpeil gecontroleerd kan worden aangepast aan boven- of benedenstroomse omstandigheden.
+
+Het sluis- en stuwcomplex van Dendermonde is een geïntegreerde waterbouwkundige structuur waarbij stuw en sluis parallel in de rivier zijn opgesteld.
+In de doorsneden komt dit duidelijk naar voren: links de stuw die het bovenstroomse peil reguleert, rechts de sluis die de scheepvaart doorgang verleent.
+
+```{r doorsnedeoverzicht, fig.cap = "Bovenaanzicht", fig.show = "hold", out.width = "100%", fig.align = "default"}
+
+# Define the input and output file paths
+input_file <- "./media/plans/B36043.tif"
+output_file <- "./media/plans/B36043.png"
+
+# Read the image
+img <- image_read(input_file)
+
+# Write the image to a new file with the .png extension
+image_write(img, path = output_file, format = "png")
+include_graphics(path = "./media/plans/B36043.png")
+```
+
+```{r doorsnedea, fig.cap = "Langsdoorsnede A", fig.show = "hold", out.width = "100%", fig.align = "default"}
+
+# Define the input and output file paths
+input_file <- "./media/plans/doorsnedeA.tif"
+output_file <- "./media/plans/doorsnedeA.png"
+
+# Read the image
+img <- image_read(input_file)
+
+# Write the image to a new file with the .png extension
+image_write(img, path = output_file, format = "png")
+include_graphics(path = "./media/plans/doorsnedeA.png")
+```
+
+```{r doorsnedebc, fig.cap = "Dwarsdoorsnede B-C", fig.show = "hold", out.width = "100%", fig.align = "default"}
+
+# Define the input and output file paths
+input_file <- "./media/plans/doorsnedeBC.tif"
+output_file <- "./media/plans/doorsnedeBC.png"
+
+# Read the image
+img <- image_read(input_file)
+
+# Write the image to a new file with the .png extension
+image_write(img, path = output_file, format = "png")
+include_graphics(path = "./media/plans/doorsnedeBC.png")
+```
+
+```{r doorsnedede, fig.cap = "Dwarsdoorsnede D-E", fig.show = "hold", out.width = "100%", fig.align = "default"}
+
+# Define the input and output file paths
+input_file <- "./media/plans/doorsnedeDE.tif"
+output_file <- "./media/plans/doorsnedeDE.png"
+
+# Read the image
+img <- image_read(input_file)
+
+# Write the image to a new file with the .png extension
+image_write(img, path = output_file, format = "png")
+include_graphics(path = "./media/plans/doorsnedeDE.png")
+```
+
+```{r doorsnedef, fig.cap = "Dwarsdoorsnede F", fig.show = "hold", out.width = "100%", fig.align = "default"}
+
+# Define the input and output file paths
+input_file <- "./media/plans/doorsnedeF.tif"
+output_file <- "./media/plans/doorsnedeF.png"
+
+# Read the image
+img <- image_read(input_file)
+
+# Write the image to a new file with the .png extension
+image_write(img, path = output_file, format = "png")
+include_graphics(path = "./media/plans/doorsnedeF.png")
+```
 
 ## Studieperiode
 
-Door het ontbreken van data over de stroomopwaartse en stroomafwaartse peilen (op waterinfo ontbreekt de meeste data van 2023, zijn temporele resoluties inconsistent vanaf juni 2024 en werden de stationsdata mogelijk omgewisseld in 2025) is de studieperiode beperkt tot 1/1/2024 tot en met 1/4/2024
+Door het ontbreken van data over de stroomopwaartse en stroomafwaartse peilen (op waterinfo ontbreekt de meeste data van 2023, zijn temporele resoluties inconsistent vanaf juni 2024 en werden de stationsdata mogelijk omgewisseld in 2025) is de studieperiode beperkt tot 1/1/2024 tot en met 1/4/2024.
 
 ## Onderzoeksluik 1: Analyse en voorbereiding via terreinbezoeken, dataverwerking en overleg
 
@@ -44,8 +147,8 @@ Hierbij wordt zowel gebruik gemaakt van terreinobservaties als van historische d
 De belangrijkste activiteiten binnen deze deelopdracht zijn:
 
 -   **Terreinbezoeken en overlegmomenten**
-    -   Bezoek aan de getijdestuw op de Dijle te Mechelen, waar sinds 2010 een aangepaste ‘vismigratiestand’ gehanteerd wordt (cf. Stevens & Coeck, 2010).
-    -   Bezoek aan de getijdestuw op de Dender te Dendermonde.
+    -   Bezoek aan de getijdestuw op de Dijle te Mechelen op 1 september 2025, waar sinds 2010 een aangepaste ‘vismigratiestand’ gehanteerd wordt [@stevens2010]. De getijdestuw was twee jaar buiten werking en werd terug in gebruik genomen midden augustus 2025.
+    -   Bezoek aan de getijdestuw op de Dender te Dendermonde op 20 februari 2025.
     -   Doel van deze bezoeken is het documenteren van de werking ter plaatse, het identificeren van technische en operationele kenmerken, en het leren uit praktijkervaringen (do’s en don’ts).
 -   **Data-analyse en visualisatie**
     -   Analyse van beschikbare meetreeksen van debieten, op- en afwaartse waterstanden en klepstanden van de stuw in Dendermonde.
@@ -77,7 +180,6 @@ Indien beslist wordt om deze stap uit te voeren, kan onderzoeksluik 2 bestaan ui
 De concrete invulling van dit onderzoeksluik is afhankelijk van de resultaten en aanbevelingen van onderzoeksluik 1, en zal pas worden vastgelegd na overleg met het WL.
 
 ```{r}
-source("./code/not_functions/libraries.R")
 source("./code/functions/estimate_parameters_with_solver_to_optimize_vo.R")
 source("./code/functions/find_parameter_combinations_to_optimize_vo.R")
 ```
@@ -112,19 +214,19 @@ waterinfo$var=factor(waterinfo$var, levels=c("waterpeil","afvoer"))
 waterinfo$loc=factor(waterinfo$loc, levels=c("Dendermonde Dender","Dendermonde Opwaarts DVW Dender","Dendermonde Afwaarts DVW tij Zeeschelde","Dendermonde tij Zeeschelde"))
 ```
 
-```{r tijdreeksenstudieperiode1, fig.height=12, fig.width=10, fig.cap="Overzicht van metingen van waterpeil (m), voor relevante meetstations doorheen de tijd van 25 tot 28 januari 2024. De stations staan geordend van stroomopwaarts naar stroomafwaarts. Noteer hoe getracht wordt om het stroomopwaarts peil niet onder de 3.82 m TAW te laten komen."}
+```{r tijdreeksenstudieperiode1, fig.height=12, fig.width=10, fig.cap="Overzicht van metingen van waterpeil (m TAW), voor relevante meetstations doorheen de tijd van 25 tot 28 januari 2024. De stations staan geordend van stroomopwaarts naar stroomafwaarts. Noteer hoe getracht wordt om het stroomopwaarts peil niet onder de 3.82 m TAW te laten komen."}
 ggplot(waterinfo %>% dplyr::filter(date_utc>as.POSIXct("2024-01-25 00:00") & date_utc<as.POSIXct("2024-01-29 00:00")), aes(x = date_utc, y = value)) + 
   geom_line() +
-  xlab("Datum") + ylab("Waterpeil (meter TAW)") +
+  xlab("Datum") + ylab("Waarde") +
   facet_wrap(~ var*loc, ncol = 1, scales="free_y") + 
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
   scale_x_datetime(date_labels = "%d-%m %H:%M", date_breaks = "12 hours") + theme_bw()
 ```
 
-```{r tijdreeksenstudieperiode2, fig.height=12, fig.width=10, fig.cap="Overzicht van metingen van waterpeil (m), voor relevante meetstations doorheen de tijd van 25 tot 28 januari 2024. De stations staan geordend van stroomopwaarts naar stroomafwaarts. Noteer hoe getracht wordt om het stroomopwaarts peil niet onder de 3.82 m TAW te laten komen."}
+```{r tijdreeksenstudieperiode2, fig.height=12, fig.width=10, fig.cap="Overzicht van metingen van waterpeil (m TAW), voor relevante meetstations doorheen de tijd van 25 tot 28 januari 2024. De stations staan geordend van stroomopwaarts naar stroomafwaarts. Noteer hoe getracht wordt om het stroomopwaarts peil niet onder de 3.82 m TAW te laten komen."}
 ggplot(waterinfo %>% dplyr::filter(date_utc>as.POSIXct("2024-01-01 00:00") & date_utc<as.POSIXct("2024-04-01 00:00")), aes(x = date_utc, y = value)) + 
   geom_line() +
-  xlab("Datum") + ylab("Waterpeil (meter TAW)") +
+  xlab("Datum") + ylab("Waarde") +
   facet_wrap(~ var*loc, ncol = 1, scales="free_y") + 
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
   scale_x_datetime(date_labels = "%d-%m %H:%M", date_breaks = "1 month") + theme_bw()
@@ -212,11 +314,15 @@ data <- waterinfo %>%
   )
 ```
 
+## Overzicht van de berekeningen
+
 In de volgende secties wordt beschreven hoe de berekeningen gebeuren.
 Het spuidebiet (en de geassocieerde stroomsnelheid) van een getijdestuw op basis van metingen om de 5 minuten van het waterpeil boven- en benedenstrooms wordt berekend.
 Debietsmetingen van de Dender ter hoogte van Dendermonde stroomopwaarts van de getijdestuw zijn voorhanden maar om een inschatting te kunnen maken van het debiet dat over de stuw gaat en het debiet dat onder de stuw gaat zijn berekeningen op basis van de stroomopwaartse en stroomafwaartse waterpeilen en stuwstanden nodig.
 Wanneer er sprake is van vrije stroming waarbij de stuw volledig is opgetrokken of volledig onder water staat waardoor er geen hoogteverschil is tussen het stroomopwaarts en stroomafwaarts waterpeil kan het debiet niet berekend worden.
 In die gevallen wordt het gemeten totaal debiet gebruikt omdat er dan geen onderscheid gemaakt moet worden tussen debiet dat over of onder de stuw gaat.
+In het geval van stroming over de stuw gaat en stroomopwaarts en stroomafwaarts peil hoger zijn dan de bovenkant van de stuw is er nog steeds enige hinder van de schuif die dan volledig onder water staat.
+In dat geval spreken we hier echter nog steeds van "ongehinderde" stroming maar gebruiken we "" om deze kanttekening mee te nemen.
 
 \
 Er wordt in de berekeningen volgende zaken beschouwd:
@@ -226,19 +332,37 @@ Er wordt in de berekeningen volgende zaken beschouwd:
 3.  **Villemonte-correctie** (voor het corrigeren van ondergedompelde stromingscondities)
 4.  **Vrije stroming** (wanneer water "ongehinderd" kan stromen)
 
-## Overzicht van de berekeningen
-
 ### Stroming over de stuw
 
 $$
 Q_o = C_e \cdot \frac{2}{3} \cdot b \cdot \sqrt{2g} \cdot h_o^{3/2}
-$$ **Waar:** - $Q_o$ = Discharge over the weir/ Debiet over de stuw (m³/s) - $C_e$ = Discharge coefficient/ Debietscoefficiënt (dimensionless/ dimensieloos) - $b$ = Width of the weir/ Breedte van de stuw (m) - $g$ = Gravitational acceleration/ Zwaartekrachtversnelling (9.81 m/s²) - $h_o$ = Head over the weir crest/ Waterhoogte boven de stuwkruin (m)
+$$ **Waar:**
+
+\- $Q_o$ = Discharge over the weir/ Debiet over de stuw (m³/s)
+
+\- $C_e$ = Discharge coefficient/ Debietscoefficiënt (dimensionless/ dimensieloos)
+
+\- $b$ = Width of the weir/ Breedte van de stuw (m)
+
+\- $g$ = Gravitational acceleration/ Zwaartekrachtversnelling (9.81 m/s²)
+
+\- $h_o$ = Head over the weir crest/ Waterhoogte boven de stuwkruin (m)
 
 ### Stroming onder de stuw
 
 $$
 Q_u = C_d \cdot b \cdot h_u \cdot \sqrt{2g (h_{up} - h_{down})}
-$$ **Waar:** - $Q_u$ = Discharge under the weir/ Debiet onder de stuw (m³/s) - $C_d$ = Discharge coefficient for underflow/ Debietscoefficiënt voor onderstroom (dimensionless/ dimensieloos) - $h_u$ = Height of weir opening/ Hoogte stuw opening (m) - $h_{up}$ = Upstream water level/ Stroomopwaarts waterpeil (m) - $h_{down}$ = Downstream water level/ Stroomafwaarts waterpeil (m)
+$$ **Waar:**
+
+\- $Q_u$ = Discharge under the weir/ Debiet onder de stuw (m³/s)
+
+\- $C_d$ = Discharge coefficient for underflow/ Debietscoefficiënt voor onderstroom (dimensionless/ dimensieloos)
+
+\- $h_u$ = Height of weir opening/ Hoogte stuw opening (m)
+
+\- $h_{up}$ = Upstream water level/ Stroomopwaarts waterpeil (m)
+
+\- $h_{down}$ = Downstream water level/ Stroomafwaarts waterpeil (m)
 
 ### Villemonte Correctie
 
@@ -391,9 +515,9 @@ data <- data %>%
   )
 ```
 
-## Tijdreeksen
+## Stuwwerking in relatie tot de bovenafvoer en het getijdenregime
 
-Stroomafwaarts van de getijsluis wordt een uitgesproken getijderegime waargenomen (Fig. \@ref(fig:tijdsreeksberekeningen)) met laag- en hoogwaterstanden tussen de 2.86 m (0.91 m TAW) en 8.46 m (6.41 m TAW).
+Stroomafwaarts van de getijsluis wordt een uitgesproken getijdenregime waargenomen (Fig. \@ref(fig:tijdsreeksberekeningen)) met laag- en hoogwaterstanden tussen de 2.86 m (0.91 m TAW) en 8.46 m (6.41 m TAW).
 Stroomopwaarts is er een streefpeil van 5.77 m (3.82 m TAW).
 In perioden van grote afvoer wanneer de stuw langs onder voor een langere tijd openstaat dan zien we het effect van laag getij op het stroomopwaarts peil dat lager wordt dan het streefpeil tot 4.79 m (6.74 m TAW).
 Wanneer het water onder de stuw gaat, observeren we eveneens een duidelijke daling van de waterhoogte boven de stuwkruin.
@@ -537,7 +661,7 @@ ggplot(plot_data, aes(x = date_utc, y = h_downstream)) +
   #   size = 0.5
   # ) +
   labs(
-    title = paste("Stroomafwaarts waterpeil voor", max_cycle_id, "getijcycli"),
+    title = "Stroomafwaarts waterpeil voor meerdere getijcycli",
     x = "Datum",
     y = "Stroomafwaarts waterpeil (m)",
     fill = "Getij"
@@ -551,23 +675,25 @@ as.data.frame(table(data$tide_direction, data$date)) %>%
   pivot_wider(
     names_from = Var1, 
     values_from = Freq) %>%
-  mutate(ratio=Ebb/Flood) %>%
+  mutate(ratio=Eb/Vloed) %>%
   summarize(median=median(ratio))
 ```
+
+## Stuwwerking in relatie tot bereikbaarheid en passeerbaarheid
 
 Onder de meeste omstandigheden blijft de getijdestuw op de bodem en wordt het waterpeil enkel geregeld door de bovenste plaat waarbij water enkel over de stuw gaat en niet eronder (62.0 % van de tijd) (Tabel \@ref(tab:stats)).
 In periodes van verhoogd debiet wordt de onderste stuwplaat gebruikt waardoor water voornamelijk onder de stuw gaat (26.8 % van de tijd).
 16.1 % van de tijd gaat er geen water over of onder de stuw en in 4.9 % van de tijd gaat het water zowel over als onder de stuw.
 Water gaat dus voornamelijk ofwel boven de stuw of onder de stuw maar zelden gelijktijdig.
 
-Om vispassage te evalueren werden twee zaken in beschouwing genomen: Contact tussen het stroomopwaarts en stroomafwaarts pand via water en stroomsnelheid.
+Om vispassage te evalueren werden twee zaken in beschouwing genomen: (1) Contact tussen het stroomopwaarts en stroomafwaarts pand via water en (2) stroomsnelheid.
 Het contact tussen het stroomopwaarts en stroomafwaarts pand is enkel relevant voor vispassage over de stuw.
 Het water kan daar immers traag genoeg stromen maar als de stuw hoger staat dan het stroomafwaarts peil dan is het stroomopwaarts pand alsnog niet bereikbaar.
 Voor water dat onder de stuw gaat is dat geen probleem want watercontact is gegarandeerd van het moment dat de stuw open gaat langs onder.
 Voor beide opties, boven en onder de stuw, is stroomsnelheid wel belangrijk.
 Vispassage wordt mogelijk geacht wanneer de stroming waartegen vissen zich moeten verzetten minder dan 1 m/s is.
-Als er watercontact is dan spreken we in dit rapport van bereikbaarheid.
-Als er watercontact is en de stroomsnelheid is opzwembaar dan spreken we in dit rapport van passeerbaarheid.
+Als er watercontact is dan spreken we in dit rapport van **bereikbaarheid**.
+Als er watercontact is en de stroomsnelheid is opzwembaar dan spreken we in dit rapport van **passeerbaarheid**.
 
 Indien er water over de stuw gaat dan is in 41.2 % van de tijd, het stroomopwaarts pand bereikbaar (i.e. opzwembaar indien stroomsnelheid niet limiterend zou zijn) (Tabel \@ref(tab:stats) en Fig.
 \@ref(fig:puntenoverber)).
@@ -594,40 +720,51 @@ ggplot(data %>% dplyr::filter(V_o < 8), aes(x = date_utc)) +
     x = "Tijd", 
     color = "Bereikbaar over stuw?"
   ) +
-  scale_color_manual(values = c("no" = "red", "yes" = "green")) +  
+  scale_color_manual(
+    values = c("no" = "red", "yes" = "green"), # De kleuren zijn nog steeds gekoppeld aan de oorspronkelijke data-waarden ("no", "yes")
+    labels = c("no" = "nee", "yes" = "ja"),    # De labels voor de legende worden hier ingesteld
+    name = "Bereikbaar over stuw?"              # Optioneel: Herbevestig de legende titel
+  ) + 
   theme_minimal(base_size = 17) +
   theme(
-    legend.position = "bottom"  # move legend below
-  )
+    legend.position = "bottom")
 ```
 
-```{r puntenover, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterstroomsnelheid over de stuw met onderscheid tussen passeerbaar en niet-passeerbaar."}
-ggplot(data %>% dplyr::filter(V_o < 8), aes(x = date_utc)) +
+```{r puntenover, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterstroomsnelheid over de stuw met onderscheid tussen passeerbaar (groen) en niet-passeerbaar (rood)."}
+ggplot(data %>% dplyr::filter(V_o < 6), aes(x = date_utc)) +
   geom_point(aes(y = V_o, color = passeerbaar_stroomopwaarts_over_stuw, group = passeerbaar_stroomopwaarts_over_stuw)) +
   labs(
     y = "Stroomsnelheid (m/s)", 
     x = "Tijd", 
     color = "Passeerbaar over stuw?"
   ) +
-  scale_color_manual(values = c("no" = "red", "yes" = "green")) +  
+  scale_color_manual(
+    values = c("no" = "red", "yes" = "green"), # Koppeling van data-waarden ("no", "yes") aan kleuren
+    labels = c("no" = "nee", "yes" = "ja"),    # Vervangt de legende tekst voor deze waarden
+    name = "Passeerbaar over stuw?"             # Zorgt ervoor dat de legende titel behouden blijft
+  ) + 
   theme_minimal(base_size = 17) +
   theme(
     legend.position = "bottom"  # move legend below
   )
 ```
 
-```{r puntenonder, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterstroomsnelheid onder de stuw met onderscheid tussen passeerbaar en niet-passeerbaar."}
-ggplot(data %>% dplyr::filter(V_o < 8), aes(x = date_utc)) +
+```{r puntenonder, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterstroomsnelheid onder de stuw met onderscheid tussen passeerbaar (groen) en niet-passeerbaar (rood)."}
+ggplot(data %>% dplyr::filter(V_o < 6), aes(x = date_utc)) +
   geom_point(aes(y = V_u, color = passeerbaar_stroomopwaarts_onder_stuw, group = passeerbaar_stroomopwaarts_onder_stuw)) +
   labs(
     y = "Stroomsnelheid (m/s)", 
     x = "Tijd", 
     color = "Passeerbaar onder stuw?"
   ) +
-  scale_color_manual(values = c("no" = "red", "yes" = "green")) +  
+  scale_color_manual(
+    values = c("no" = "red", "yes" = "green"), # Bepaalt de kleuren gebaseerd op de data-waarden
+    labels = c("no" = "nee", "yes" = "ja"),    # Past de tekst in de legende aan
+    name = "Passeerbaar onder stuw?"            # Optioneel: Herbevestigt de legende titel
+  ) + 
   theme_minimal(base_size = 17) +
   theme(
-    legend.position = "bottom"  # move legend below
+    legend.position = "bottom"
   )
 ```
 
@@ -667,14 +804,26 @@ data %>%
   )
 ```
 
-```{r}
+Water stroomt vooral in stroomafwaarts richting wat logisch is aangezien er naast het eb-gedreven getij ook een belangrijk aandeel bovenafvoer is dat moet weggewerkt worden.
+
+Gedurende eb wordt er voornamelijk water stroomafwaarts afgevoerd (89.5 % van de tijd) over (65.3 % van de tijd) en onder de stuw (28.9 % van de tijd) (Tabel \@ref(tab:ebvloed)).
+Gedurende eb is er geen waterstroming gedurende 9.4 % van de tijd.
+Gedurende eb wordt water stroomopwaarts afgevoerd voor slechts 1.1 % van de tijd.
+Daarbij gaat het water respectievelijk 0.8 % en 0.3 % van de tijd over en onder de stuw in stroomopwaartse richting.
+
+Gedurende vloed wordt er voornamelijk water stroomafwaarts afgevoerd (62.7 % van de tijd) over (48.0 % van de tijd) en onder de stuw (18.2 % van de tijd).
+Gedurende vloed is er geen waterstroming gedurende 26.8 % van de tijd.
+Gedurende vloed wordt water stroomopwaarts afgevoerd voor 11.3 % van de tijd.
+Daarbij gaat het water respectievelijk 6.7 % en 5.4 % van de tijd over en onder de stuw in stroomopwaartse richting.
+
+```{r ebvloed}
 data %>%
   # Filter out NA rows from smoothing and slack periods
   dplyr::filter(!is.na(tidal_cycle_id), !is.na(tide_direction)) %>%
   # --- Key Change: Filter out the first and last tidal cycle ID ---
   dplyr::filter(tidal_cycle_id != min(tidal_cycle_id, na.rm = TRUE) &
          tidal_cycle_id != max(tidal_cycle_id, na.rm = TRUE)) %>%
-  group_by(tidal_cycle_id, tide_direction) %>%
+  group_by(tide_direction) %>%
   summarise(
     total_time_in_phase = n(),
     # New calculations for positive and negative discharge
@@ -683,8 +832,9 @@ data %>%
     flow_under_pos = sum(Q_u > 0, na.rm = TRUE),
     flow_under_neg = sum(Q_u < 0, na.rm = TRUE),
     # Remaining metrics
-    no_flow = sum(Q_o <= 0 & Q_u <= 0, na.rm = TRUE),
-    both_flow = sum((Q_o > 0 & Q_u > 0), na.rm = TRUE),
+    no_flow = sum(Q_o == 0 & Q_u == 0, na.rm = TRUE),
+    both_flow_pos = sum(Q_o > 0 & Q_u > 0, na.rm = TRUE),
+    both_flow_neg = sum(Q_o < 0 & Q_u < 0, na.rm = TRUE),
     .groups = "drop"
   ) %>%
   # Calculate percentages for each phase within each cycle
@@ -694,7 +844,8 @@ data %>%
     water_stroomt_onder_stroomafwaarts = flow_under_pos / total_time_in_phase * 100,
     water_stroomt_onder_stroomopwaarts = flow_under_neg / total_time_in_phase * 100,
     water_stroomt_niet = no_flow / total_time_in_phase * 100,
-    water_stroomt_over_en_onder = both_flow / total_time_in_phase * 100
+    water_stroomt_over_en_onder_stroomafwaarts = both_flow_pos / total_time_in_phase * 100,
+    water_stroomt_over_en_onder_stroomopwaarts = both_flow_neg / total_time_in_phase * 100
   )  %>%
 # 3. Calculate the average and median percentages across all tidal cycles
   pivot_longer(
@@ -708,7 +859,11 @@ data %>%
     Mediaan = round(median(Percentage, na.rm = TRUE), 1),
     .groups = "drop"
   ) %>% 
-  kable()
+  # Voeg de rename() stap toe om de kolomnaam aan te passen
+  rename(
+    "Getij" = tide_direction
+  ) %>% 
+  kable(caption = "Percentage tijdsaandeel verschillende routes en richtingen water voor vloed en eb gedurende de studieperiode.")
 ```
 
 ```{r}
@@ -716,49 +871,14 @@ source("./code/functions/plot_tidal_cycle_analysis_combined.R")
 # Call the function for a specific tidal cycle, for example, cycle 2.
 ```
 
-Op 15 januari 2024 was het business as usual met de bovenste schuif die naar omhoog wordt geschoven als het stroomafwaarts waterpeil het stroomopwaarts streefpeil van 5.77 m bereikt.
-Afhankelijk van de bovenafvoer neemt het stroomopwaarts peil dan meer of minder toe.
-Net voor en net na de werking van de bovenste schuif is er dikwijls een kort venster voor vispassage doordat de stroomsnelheid niet te hoog is.
+Stroomafwaartse passage is het grootste deel van de tijd mogelijk (82.6 % van de tijd) over (60.8 % van de tijd) of onder de stuw (26.7 % van de tijd) (Fig. \@ref(fig:bartotaal)).
+Indien de onderkant van de stuw open is (27.1 % van de tijd), dan is stroomafwaartse passage onder de stuw bijna altijd mogelijk (26.7 % van de tijd), maar stroomopwaartse passage onder de stuw veel minder (8.6 % van de tijd).
+Dat komt omdat water veel vaker stroomafwaarts wordt weggelaten dan dat er stroomopwaarts wordt toegelaten (Tabel \@ref(tab:ebvloed)).
+Er is maandelijkse variatie in deze verhoudingen, maar deze is niet zeer uitgesproken (Fig. \@ref(fig:barmaand)).
 
-```{r tideplot20240115, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterpeil en stuwwerking op 15 januari 2024."}
-plot_tidal_cycle_analysis_combined(data, chosen_date = as.POSIXct("2024-01-15", tz = "UTC"))
-```
+Elke dag zijn de mogelijkheden voor stroomafwaartse migratie aanzienlijk hoger dan voor stromopwaartse migratie (Fig. \@ref(fig:passeerbaargrafiekrichting)).
 
-Op 22 maart 2024 bleef de onderste schuif op de bodem staan waardoor er geen stroming was onder de schuif en passage enkel mogelijk kon zijn over de stuw (Fig. \@ref(fig:tideplot20240322)).
-Voor de eerste getijcyclus van 22 maart stond de bovenkant van de bovenste schuif op 5.35 meteren water stroomde aanvankelijk over de stuw in stroomafwaartse richting.
-Eens het stijgende stroomafwaartse waterpeil de hoogte van de stuw had bereikt stroomde het water in stroomopwaartse richting tot het tij keerde.
-Vispassage was mogelijk tot 20 minuten na het keren van het tij, daarna werd de stroomsnelheid te hoog voor stroomopwaartse visbeweging.
-Gedurende de tweede getijcyclus die dag werd de bovenste schuif wel geactiveerd bij vloed en meerbepaald net voor het stroomafwaarts peil het stroomopwaarts peil zou overschreden hebben.
-De bovenste schuif schoof naar omhoog tot boven het hoogste stroomafwaarts waterpeil van die dag waardoor er gedurende meer dan zes uur geen water over of onder de stuw kon en er dus ook geen visbeweging mogelijk was.
-Ongeveer twee uur na hoogwater zakte de bovenste schuif opnieuw waardoor het stroomopwaarts peil ook begon te dalen.
-Stroomopwaartse migratie over de stuw was dan voor enkele minuten mogelijk.
-De stroomsnelheid werd echter snel te hoog om nog vispassage mogelijk te maken.
-
-```{r tideplot20240322, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterpeil en stuwwerking op 22 maart 2024."}
-plot_tidal_cycle_analysis_combined(data, chosen_date = as.POSIXct("2024-03-22", tz = "UTC"))
-```
-
-Op 5 januari stond de onderste schuif constant open wat leidde tot een aanzienlijke periode waarin vispassage onder de stuw mogelijk was (Fig. \@ref(fig:tideplot20240105)).
-Water kon ongehinderd stromen tot ongeveer 16h (wat ook te zien is aan het minimale verschil tussen stroomopwaarts en stroomafwaarts peil in die periode).
-Na 16h werd de onderste schuif naar beneden geschoven waardoor het stroomopwaartse peil meer toenam dan eerder op de dag en waardoor de stroomsnelheid onder de stuw aanzienlijk toenam.
-Na de kentering van het getij zorgde het vloedregime echter weer voor een gunstig regime voor stroomopwaartse migratie.
-
-```{r tideplot20240105, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterpeil en stuwwerking op 5 januari 2024."}
-plot_tidal_cycle_analysis_combined(data, chosen_date = as.POSIXct("2024-01-05", tz = "UTC"))
-```
-
-Op 8 januari werd de onderste schuif opnieuw geopend maar in tegenstelling tot 5 januari stond de schuif niet heel de dag open en was de opening veel kleiner (Fig. \@ref(fig:tideplot20240108)).
-Daardoor bleef het stroomafwaarts peil altijd lager dan de bovenkant van de stuw en was er dus geen sprake van vrije stroming.
-De momenten dat de stuw vispasseerbaar waren, waren dan ook zeer beperkt.
-Enkel rond de kentering wanneer wat water naar binnen kon stromen en het verschil tussen stroomopwaarts en stroomafwaarts peil minder dan 15 cm was, was vispassage mogelijk.
-
-```{r tideplot20240108, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterpeil en stuwwerking op 8 januari 2024."}
-plot_tidal_cycle_analysis_combined(data, chosen_date = as.POSIXct("2024-01-08", tz = "UTC"))
-```
-
-## Tijdsaandeel bereikbaarheid en passeerbaarheid
-
-```{r fig.width=12, fig.height=8, out.width='100%', fig.align='center'}
+```{r bartotaal, fig.cap = "Barplot tijdsaandeel bereikbaarheid en passeerbaarheid vissen onder verschillende omstandigheden.", fig.width=12, fig.height=8, out.width='100%', fig.align='center'}
 data %>%
   pivot_longer(
     cols = matches("^(bereikbaar|passeerbaar)_(via_)?(stroomopwaarts|stroomafwaarts)?"),
@@ -780,7 +900,15 @@ data %>%
   ) %>%
   ggplot(aes(x = type, y = aandeel_yes, fill = group)) +
   geom_col() +
-  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  # --- ADDED CODE: geom_text for bar labels ---
+  geom_text(
+    aes(label = scales::percent(aandeel_yes, accuracy = 0.1)),
+    vjust = -0.5, # Positions the text just above the bar
+    size = 4,     # Adjusts the text size
+    color = "black" # Optional: ensures the text is visible
+  ) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 0.1),
+                     limits = c(0, 1)) + # Extends the y-axis to 110% to prevent labels from being clipped +
   labs(
     title = "Bereikbaarheid en passeerbaarheid per route en richting",
     x = "Route × Richting", y = "Aandeel momenten",
@@ -791,7 +919,7 @@ data %>%
 
 ```
 
-```{r fig.width=12, fig.height=20, out.width='100%', fig.align='center'}
+```{r barmaand, fig.cap = "Barplot tijdsaandeel bereikbaarheid en passeerbaarheid vissen onder verschillende omstandigheden per maand.",fig.width=12, fig.height=20, out.width='100%', fig.align='center'}
 data %>%
   mutate(month = floor_date(as_date(date_utc), "month")) %>%
   pivot_longer(
@@ -818,10 +946,16 @@ data %>%
   ) %>%
   ggplot(aes(x = type, y = aandeel_yes, fill = group)) +
   geom_col() +
+  geom_text(
+    aes(label = scales::percent(aandeel_yes, accuracy = 1)),
+    vjust = -0.5, # Positions the text just above the bar
+    size = 4,     # Adjusts the text size
+    color = "black" # Optional: ensures the text is visible
+  ) +
   facet_wrap(~ month_label, ncol = 1) +  # gebruik nieuwe maand-labels
   scale_y_continuous(labels = scales::percent_format(accuracy = 1), limits = c(0, 1)) +
   labs(
-    title = "Aandeel 'yes'-momenten per route × richting per maand",
+    title = "Aandeel momenten bereikbaar en passeerbaar per route × richting per maand",
     x = "Route × Richting", y = "Aandeel momenten",
     fill = "Categorie"
   ) +
@@ -832,7 +966,7 @@ data %>%
   )
 ```
 
-```{r fig.width=12, fig.height=8, out.width='100%', fig.align='center'}
+```{r passeerbaargrafiekrichting, fig.cap = "Daggemiddelde tijdsaandeel passeerbaarheid stroomopwaarts en stroomafwaarts.", fig.width=12, fig.height=8, out.width='100%', fig.align='center'}
 data %>%
   mutate(date = as.Date(date_utc)) %>%
   group_by(date) %>%
@@ -854,7 +988,7 @@ data %>%
   theme_minimal(base_size = 18)
 ```
 
-```{r fig.width=12, fig.height=5, out.width='100%', fig.align='center'}
+```{r passeerbaargrafiekrouterichting, fig.cap = "Daggemiddelde tijdsaandeel passeerbaarheid stroomopwaarts en stroomafwaarts, onder en over de stuw.", fig.width=12, fig.height=5, out.width='100%', fig.align='center'}
 data %>%
   mutate(date = as.Date(date_utc)) %>%
   group_by(date) %>%
@@ -892,7 +1026,7 @@ data %>%
   )
 ```
 
-```{r fig.width=12, fig.height=5, out.width='100%', fig.align='center'}
+```{r passeerbaargrafiekrichtingroute, fig.cap = "Daggemiddelde tijdsaandeel passeerbaarheid onder en over de stuw, stroomopwaarts en stroomafwaarts.", fig.width=12, fig.height=5, out.width='100%', fig.align='center'}
 data %>%
   mutate(date = as.Date(date_utc)) %>%
   group_by(date) %>%
@@ -930,8 +1064,6 @@ data %>%
   )
 ```
 
-## Range waterhoogte boven stuw voor stroomopwaartse passage over stuw
-
 ```{r eval=FALSE, warning=FALSE}
 data_ho <- data %>% dplyr::filter(h_upstream!=h_downstream)
 
@@ -948,10 +1080,10 @@ ho_results_df <- map_dfr(ho_results, as_tibble)
 ```
 
 Hoe hoger het debiet, des te hoger dienen de opening onder de stuw en de waterhoogte boven de stuwkruin te zijn om vispassage over de stuw mogelijk te maken.
-Bij een debiet van 10 m³ en een opening onder de stuw van 0.5 m is vispassage mogelijk vanaf een waterhoogte boven de stuwkruin van 1 m.
+Bij een debiet van 10 m³ en een opening onder de stuw van 0.5 m is vispassage mogelijk vanaf een waterhoogte boven de stuwkruin van 1 m (Fig. \@ref(fig:rangebovenstuw)).
 Bij een debiet van 90 m³ en een opening onder de stuw van 0.5 m is vispassage mogelijk vanaf een waterhoogte boven de stuwkruin van meer dan 5 m.
 
-```{r rangebovenstuw, fig.width=12, fig.height=16, out.width='100%', fig.align='center'}
+```{r rangebovenstuw, fig.cap="Stroomsnelheid over de stuw (V_o in m/s) un functie van de opening onder de stuw (h_u in m) voor verschillende debieten (m³/s).", fig.width=12, fig.height=16, out.width='100%', fig.align='center'}
 # Set the parameters for the plots
 V_o_threshold <- 1
 h_up <- 5.0
@@ -1008,7 +1140,6 @@ ggplot(plot_data, aes(x = h_u, y = V_o, color = h_o)) +
   geom_hline(yintercept = V_o_threshold, linetype = "dashed", color = "black") +
   facet_wrap(~ Q_total, scales = "free_y") +
   labs(
-    title = "Effect van opening benedenschuif op stroomsnelheid over de stuw voor verschillende debieten (m³/s)",
     x = "Opening onder de stuw (m)",
     y = "Stroomsnelheid over de stuw (m/s)",
     color = "Waterhoogte boven stuwkruin (m)"
@@ -1038,21 +1169,25 @@ solutions <- find_parameter_combinations_to_optimize_vo(
 print(solutions)
 ```
 
-## Range opening onder stuw voor stroomopwaartse passage onder stuw
-
 Vispassage onder de stuw is onafhankelijk van de opening en wordt louter bepaald door het verschil tussen het stroomopwaarts en stroomafwaarts peil.
-Stroomopwaartse vispassage onder de stuw is enkel mogelijk indien het verschil tussen stroomopwaarts en stroomafwaarts peil minder dan 14 cm bedraagt.
+Stroomopwaartse vispassage onder de stuw is enkel mogelijk indien het verschil tussen stroomopwaarts en stroomafwaarts peil minder dan 14 cm bedraagt (Fig. \@ref(fig:rangeonderstuw)).
 Bij vrije stroming is in 76.3 % van de gevallen de stuw passeerbaar langs onderen.
 
-```{r rangeonderstuw, fig.width=12, fig.height=16, out.width='100%', fig.align='center'}
+```{r rangeonderstuw, fig.cap="Stroomsnelheid onder de stuw in functie van het hoogteverschil tussen het stroomopwaarts en stroomafwaarts waterpeil.", fig.width=8, fig.height=8, out.width='100%', fig.align='center'}
 # Set the parameters for the plots
 b <- 17
 C_d <- 0.6
 g <- 9.81
+V_u_target <- 1 # m/s
+
+# Calculate the corresponding head difference (The value for the vertical line)
+# Formula: delta_h = V_u^2 / (C_d^2 * 2 * g)
+head_difference_target <- (V_u_target^2) / (C_d^2 * 2 * g)
+# head_difference_target is approximately 0.1415788877562578
 
 # Define a range for the head difference on the x-axis
 # (h_up - h_down) can range from 0 up to a reasonable maximum
-head_difference_range <- seq(from = 0, to = 5.0, length.out = 100)
+head_difference_range <- seq(from = 0, to = 4.0, length.out = 100)
 
 # Define the core underflow velocity calculation function
 get_vu <- function(head_diff) {
@@ -1070,15 +1205,39 @@ plot_data <- data.frame(
 )
 
 # Plot the results
+library(ggplot2)
+
 ggplot(plot_data, aes(x = head_difference, y = V_u)) +
   geom_line(size = 1, color = "blue") +
-  labs(
-    title = "Underflow Velocity vs. Head Difference",
-    x = "Head Difference (h_up - h_down, in m)",
-    y = "Underflow Velocity (V_u, in m/s)"
+  
+  # 1. Horizontal dotted line at V_u = 1 m/s
+  geom_hline(yintercept = V_u_target, linetype = "dotted", color = "red", size = 0.8) +
+  
+  # 2. Vertical dotted line at the calculated head_difference
+  geom_vline(xintercept = head_difference_target, linetype = "dotted", color = "red", size = 0.8) +
+  
+  # Optional: Mark the intersection point
+  geom_point(aes(x = head_difference_target, y = V_u_target), color = "red", size = 3) +
+  
+  # 3. Label V_u on the horizontal line
+  geom_text(
+    aes(x = max(head_difference_range), y = V_u_target), 
+    label = paste0("V_u = ", V_u_target, " m/s"), 
+    hjust = 1.1, vjust = -0.5, color = "red", size = 3
   ) +
-  theme_minimal()
-
+  
+  # 4. Label head_difference on the vertical line
+  geom_text(
+    aes(x = head_difference_target, y = 0), 
+    label = paste0("h_diff = ", round(head_difference_target, 4), " m"), 
+    hjust = -0.1, vjust = 1.5, color = "red", size = 3
+  ) +
+  
+  labs(
+    x = "Hoogteverschil stroomopwaarts en stroomafwaarts waterpeil (h_up - h_down, in m)",
+    y = "Stroomsnelheid onder stuw (V_u, in m/s)"
+  ) +
+  theme_minimal() 
 ```
 
 ```{r eval=FALSE}
@@ -1092,3 +1251,57 @@ head_diff <- 1 / (C_d^2 * 2 * g)
 # Print the result
 print(paste("The head difference for an underflow velocity of 1 m/s is:", round(head_diff, 4), "m"))
 ```
+
+## Gedetailleerde analyse van een aantal representatieve dagen
+
+Op 15 januari 2024 was het business as usual met de bovenste schuif die naar omhoog wordt geschoven als het stroomafwaarts waterpeil het stroomopwaarts streefpeil van 5.77 m bereikt (Fig. \@ref(fig:tideplot20240115)).
+Afhankelijk van de bovenafvoer neemt het stroomopwaarts peil dan meer of minder toe.
+Net voor en net na de werking van de bovenste schuif is er dikwijls een kort venster voor vispassage doordat de stroomsnelheid niet te hoog is.
+
+```{r tideplot20240115, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterpeil, stuwwerking en stroomsnelheid op 15 januari 2024. De gekleurde balken geven aan of vispassage over of onder de stuw mogelijk is. h_upstream = stroomopwaarts waterpeil; h_downstream = stroomafwaarts waterpeil; h_o = waterhoogte boven stuwkruin; h_si = hoogte bovenkant stuw; sluice_opening = opening onder stuw; V_o = stroomsnelheid over de stuw; V_u = stroomsnelheid onder de stuw."}
+plot_tidal_cycle_analysis_combined(data, chosen_date = as.POSIXct("2024-01-15", tz = "UTC"))
+```
+
+Op 22 maart 2024 bleef de onderste schuif op de bodem staan waardoor er geen stroming was onder de schuif en passage enkel mogelijk kon zijn over de stuw (Fig. \@ref(fig:tideplot20240322)).
+Voor de eerste getijcyclus van 22 maart stond de bovenkant van de bovenste schuif op 5.35 meteren water stroomde aanvankelijk over de stuw in stroomafwaartse richting.
+Eens het stijgende stroomafwaartse waterpeil de hoogte van de stuw had bereikt stroomde het water in stroomopwaartse richting tot het tij keerde.
+Vispassage was mogelijk tot 20 minuten na het keren van het tij, daarna werd de stroomsnelheid te hoog voor stroomopwaartse visbeweging.
+Gedurende de tweede getijcyclus die dag werd de bovenste schuif wel geactiveerd bij vloed en meerbepaald net voor het stroomafwaarts peil het stroomopwaarts peil zou overschreden hebben.
+De bovenste schuif schoof naar omhoog tot boven het hoogste stroomafwaarts waterpeil van die dag waardoor er gedurende meer dan zes uur geen water over of onder de stuw kon en er dus ook geen visbeweging mogelijk was.
+Ongeveer twee uur na hoogwater zakte de bovenste schuif opnieuw waardoor het stroomopwaarts peil ook begon te dalen.
+Stroomopwaartse migratie over de stuw was dan voor enkele minuten mogelijk.
+De stroomsnelheid werd echter snel te hoog om nog vispassage mogelijk te maken.
+
+```{r tideplot20240322, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterpeil, stuwwerking en stroomsnelheid op 22 maart 2024. De gekleurde balken geven aan of vispassage over of onder de stuw mogelijk is. h_upstream = stroomopwaarts waterpeil; h_downstream = stroomafwaarts waterpeil; h_o = waterhoogte boven stuwkruin; h_si = hoogte bovenkant stuw; sluice_opening = opening onder stuw; V_o = stroomsnelheid over de stuw; V_u = stroomsnelheid onder de stuw."}
+plot_tidal_cycle_analysis_combined(data, chosen_date = as.POSIXct("2024-03-22", tz = "UTC"))
+```
+
+Op 5 januari stond de onderste schuif constant open wat leidde tot een aanzienlijke periode waarin vispassage onder de stuw mogelijk was (Fig. \@ref(fig:tideplot20240105)).
+Water kon ongehinderd stromen tot ongeveer 16h (wat ook te zien is aan het minimale verschil tussen stroomopwaarts en stroomafwaarts peil in die periode).
+Na 16h werd de onderste schuif naar beneden geschoven waardoor het stroomopwaartse peil meer toenam dan eerder op de dag en waardoor de stroomsnelheid onder de stuw aanzienlijk toenam.
+Na de kentering van het getij zorgde het vloedregime echter weer voor een gunstig regime voor stroomopwaartse migratie.
+
+```{r tideplot20240105, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterpeil, stuwwerking en stroomsnelheid op 5 januari 2024. De gekleurde balken geven aan of vispassage over of onder de stuw mogelijk is. h_upstream = stroomopwaarts waterpeil; h_downstream = stroomafwaarts waterpeil; h_o = waterhoogte boven stuwkruin; h_si = hoogte bovenkant stuw; sluice_opening = opening onder stuw; V_o = stroomsnelheid over de stuw; V_u = stroomsnelheid onder de stuw."}
+plot_tidal_cycle_analysis_combined(data, chosen_date = as.POSIXct("2024-01-05", tz = "UTC"))
+```
+
+Op 8 januari werd de onderste schuif opnieuw geopend maar in tegenstelling tot 5 januari stond de schuif niet heel de dag open en was de opening veel kleiner (Fig. \@ref(fig:tideplot20240108)).
+Daardoor bleef het stroomafwaarts peil altijd lager dan de bovenkant van de stuw en was er dus geen sprake van vrije stroming.
+De momenten dat de stuw vispasseerbaar waren, waren dan ook zeer beperkt.
+Enkel rond de kentering wanneer wat water naar binnen kon stromen en het verschil tussen stroomopwaarts en stroomafwaarts peil minder dan 15 cm was, was vispassage mogelijk.
+
+```{r tideplot20240108, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterpeil, stuwwerking en stroomsnelheid op 8 januari 2024. De gekleurde balken geven aan of vispassage over of onder de stuw mogelijk is. h_upstream = stroomopwaarts waterpeil; h_downstream = stroomafwaarts waterpeil; h_o = waterhoogte boven stuwkruin; h_si = hoogte bovenkant stuw; sluice_opening = opening onder stuw; V_o = stroomsnelheid over de stuw; V_u = stroomsnelheid onder de stuw."}
+plot_tidal_cycle_analysis_combined(data, chosen_date = as.POSIXct("2024-01-08", tz = "UTC"))
+```
+
+```{r tideplot2024, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterpeil, stuwwerking en stroomsnelheid van 1 januari 2024 tot en met 31 maart 2024. h_upstream = stroomopwaarts waterpeil; h_downstream = stroomafwaarts waterpeil; h_o = waterhoogte boven stuwkruin; h_si = hoogte bovenkant stuw; sluice_opening = opening onder stuw; V_o = stroomsnelheid over de stuw; V_u = stroomsnelheid onder de stuw."}
+output="html"
+if (output=="html"){ggplotly(plot_tidal_cycle_analysis_combined(data, chosen_date = "full"))}
+```
+
+## Stuwwerking van stuw 222 te Mechelen
+
+**Stuw 222 werd bezocht op 1 september 2025 en is sinds 25 juni 2025 weer in werking, na twee jaar buiten bedrijf te zijn geweest, een periode waarin het getij vrij spel had.** Gedurende die twee jaar waren er geen noemenswaardige structurele problemen, maar de vrije getijwerking bemoeilijkte wel de regeling van het streefpeil van de Binnendijle (4,25 m TAW) door leegloop bij eb.
+Daarnaast meldde men grotere druk op de oevers door periodieke schommelingen in de waterstand en waren er aanwijzingen voor een grotere droogtestress in stroomopwaartse natte natuurgebieden.
+**Sinds de heropstart komt water enkel stroomopwaarts over de stuw bij hoogwater, met een nagestreefd streefpeil van 4,8 m TAW.** Echter, volgens Waterinfo lijkt het erop dat eerder een peil van **4,5 m TAW** wordt nagestreefd op dit moment.
+Om de werking van de stuw te beoordelen zijn logging van de stuwwerking vereist maar die ontbreken momenteel nog.
