@@ -7,17 +7,19 @@ library(zoo)
 plot_tidal_cycle_analysis_combined <- function(data, chosen_date) {
 
   # Filter the data for the requested day
-  plot_data <- data %>%
-    dplyr::filter(date == chosen_date) %>%
-    # Calculate h_si and combine the fish passage variables for easy plotting
+  if (class(chosen_date)[1]=="POSIXct") {plot_data <- data %>% dplyr::filter(date == chosen_date)}
+  else {plot_data <- data %>% dplyr::filter(V_o < 10)}
+
+  # Calculate h_si and combine the fish passage variables for easy plotting
+  plot_data <- plot_data %>%
     mutate(
       h_si = case_when(
         h_upstream > h_downstream ~ h_upstream - h_o,
         h_upstream < h_downstream ~ h_downstream - h_o,
         TRUE ~ NA_real_
       ),
-      passage_over = ifelse(passeerbaar_stroomopwaarts_over_stuw == "yes", "Over Sluice", NA_character_),
-      passage_under = ifelse(passeerbaar_stroomopwaarts_onder_stuw == "yes", "Under Sluice", NA_character_)
+      passage_over = ifelse(passeerbaar_stroomopwaarts_over_stuw == "yes", "Over stuw", NA_character_),
+      passage_under = ifelse(passeerbaar_stroomopwaarts_onder_stuw == "yes", "Onder stuw", NA_character_)
     )
 
   # Prepare data for plotting
@@ -25,44 +27,59 @@ plot_tidal_cycle_analysis_combined <- function(data, chosen_date) {
     select(date_utc, h_upstream, h_downstream, h_o, h_si, sluice_opening, V_o, V_u) %>%
     pivot_longer(
       cols = -date_utc,
-      names_to = "variable",
+      names_to = "parameter",
       values_to = "value"
     ) %>%
     mutate(
       category = case_when(
-        variable %in% c("h_upstream", "h_downstream", "h_o", "h_si", "sluice_opening") ~ "Height (m)",
-        variable %in% c("V_o", "V_u") ~ "Velocity (m/s)"
+        parameter %in% c("h_upstream", "h_downstream", "h_o", "h_si", "sluice_opening") ~ "Hoogte (m)",
+        parameter %in% c("V_o", "V_u") ~ "Stroomsnelheid (m/s)"
       ),
-      variable = factor(variable, levels = c("h_upstream", "h_downstream", "h_o", "h_si", "sluice_opening", "V_o", "V_u"))
+      parameter = factor(parameter, levels = c("h_upstream", "h_downstream", "h_o", "h_si", "sluice_opening", "V_o", "V_u"))
     )
 
   # Create the combined plot using facets
-  ggplot(plot_data) +
+  g<-ggplot(plot_data) +
     # Highlight periods of fish passage as a background
     geom_rect(
-      aes(xmin = date_utc, xmax = lead(date_utc), ymin = -Inf, ymax = Inf, fill = passage_over),
+      aes(xmin = date_utc, xmax = lead(date_utc), ymin = -5, ymax = 15, fill = passage_over),
       alpha = 0.2
     ) +
     geom_rect(
-      aes(xmin = date_utc, xmax = lead(date_utc), ymin = -Inf, ymax = Inf, fill = passage_under),
+      aes(xmin = date_utc, xmax = lead(date_utc), ymin = -5, ymax = 15, fill = passage_under),
       alpha = 0.2
     ) +
-    geom_line(data = plot_data_long, aes(x = date_utc, y = value, color = variable), size = 1) +
+    geom_line(data = plot_data_long, aes(x = date_utc, y = value, color = parameter, linetype = parameter), size = 1) +
     facet_wrap(~category, ncol = 1, scales = "free_y") +
     labs(
-      title = paste("Tidal Cycle", chosen_date),
-      subtitle = "Water Levels, Head, and Velocities",
-      x = "Time",
-      y = "Value",
-      color = "Variable",
-      fill = "Fish Passage"
+      title = paste("Getijcycli", chosen_date),
+      subtitle = "Waterpeil, hoogteverschil en stroomsnelheden",
+      x = "Tijd",
+      y = "Waarde",
+      color = "parameter",
+      fill = "Vispassage"
     ) +
     scale_fill_manual(
-      values = c("Over Sluice" = "green", "Under Sluice" = "purple"),
-      na.value = "transparent"
+      values = c("Over stuw" = "lightgreen", "Onder stuw" = "darkgreen"),
+      na.value = "transparent",
+      na.translate = FALSE
     ) +
     scale_color_manual(
-      values = c("h_upstream" = "blue", "h_downstream" = "darkblue", "h_o" = "red", "h_si" = "orange", "sluice_opening" = "black", "V_o" = "red", "V_u" = "darkred")
+      values = c("h_upstream" = "blue", "h_downstream" = "darkblue", "h_o" = "darkred", "h_si" = "darkgrey", "sluice_opening" = "black", "V_o" = "blue", "V_u" = "black")
+    ) +
+    # Add manual scale for linetype
+    scale_linetype_manual(
+      values = c(
+        "h_upstream" = "solid",
+        "h_downstream" = "solid",
+        "h_o" = "dotted",
+        "h_si" = "dashed",
+        "sluice_opening" = "dashed",
+        "V_o" = "solid",
+        "V_u" = "solid"
+      )
     ) +
     theme_minimal()
+  if (class(chosen_date)[1]!="POSIXct"){g <- g + theme(legend.position="none")}
+  g
 }

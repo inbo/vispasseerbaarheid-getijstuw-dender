@@ -20,6 +20,10 @@ analyze_flow_and_passage <- function(data) {
 
   free_flow_under <- data$freeflow_via_sluice == "yes"
 
+  free_flow_under_ebb <- data$freeflow_via_sluice == "yes" & data$tide_direction == "Eb" & is.na(data$tide_direction) == FALSE
+
+  free_flow_under_flood <- data$freeflow_via_sluice == "yes" & data$tide_direction == "Vloed" & is.na(data$tide_direction) == FALSE
+
   # --- 2. Calculate Flow Distribution Percentages ---
   pct_flow_over <- sum(flow_over) / total_rows * 100
   pct_flow_under <- sum(flow_under) / total_rows * 100
@@ -27,6 +31,8 @@ analyze_flow_and_passage <- function(data) {
   pct_both_flow <- sum(both_flow) / total_rows * 100
   pct_free_flow_over <- sum(free_flow_over) / total_rows * 100
   pct_free_flow_under <- sum(free_flow_under) / total_rows * 100
+  pct_free_flow_under_ebb <- sum(free_flow_under_ebb) / total_rows * 100
+  pct_free_flow_under_flood <- sum(free_flow_under_flood) / total_rows * 100
 
   # --- 3. Calculate Fish Passage Success Rates ---
 
@@ -57,6 +63,10 @@ analyze_flow_and_passage <- function(data) {
     Analysis = c(
       "Water gaat over de stuw",
       "Water gaat onder de stuw",
+      "Water gaat over de stuw bij 'vrijstromende' condities",
+      "Water gaat onder de stuw bij vrijstromende condities",
+      "Water gaat onder de stuw bij vrijstromende condities en gedurende eb",
+      "Water gaat onder de stuw bij vrijstromende condities en gedurende vloed",
       "Er gaat geen water voorbij de stuw",
       "Water gaat zowel boven als onder de stuw",
       "Vissen kunnen de stuw bereiken wanneer er water over gaat.",
@@ -68,6 +78,10 @@ analyze_flow_and_passage <- function(data) {
     Percentage = round(c(
       pct_flow_over,
       pct_flow_under,
+      pct_free_flow_over,
+      pct_free_flow_under,
+      pct_free_flow_under_ebb,
+      pct_free_flow_under_flood,
       pct_no_flow,
       pct_both_flow,
       pct_bereikbaar_over,

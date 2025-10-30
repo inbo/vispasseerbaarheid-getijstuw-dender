@@ -25,8 +25,8 @@ add_tidal_cycle_id_manual <- function(data, smoothing_hours = 3) {
     mutate(
       tide_direction_raw = diff(c(NA, smoothed_h_downstream)),
       tide_direction = case_when(
-        tide_direction_raw > 0 ~ "Flood",
-        tide_direction_raw < 0 ~ "Ebb",
+        tide_direction_raw > 0 ~ "Vloed",
+        tide_direction_raw < 0 ~ "Eb",
         TRUE ~ NA_character_
       )
     ) %>%
