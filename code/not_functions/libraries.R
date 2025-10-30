@@ -22,6 +22,8 @@ library(randomForest)
 library(corrplot)
 library(pROC)
 library(zoo)
+library(magick)
+library(plotly)
 
 # package_info(
 #   pkgs = "loaded",
