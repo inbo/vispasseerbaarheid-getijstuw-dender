@@ -8,12 +8,24 @@ author:
     orcid: "0000-0002-8226-8080"
     affiliation: "Instituut voor Natuur- en Bosonderzoek (INBO)"
     corresponding: true
+  - name:
+      given: "David"
+      family: "Buysse"
+    email: "david.buysse@inbo.be"
+    orcid: "0000-0002-4437-5678"
+    affiliation: "Instituut voor Natuur- en Bosonderzoek (INBO)"
+  - name:
+      given: "Johan"
+      family: "Coeck"
+    email: "johan.coeck@inbo.be"
+    orcid: "0000-0003-2732-7428"
+    affiliation: "Instituut voor Natuur- en Bosonderzoek (INBO)"
 reviewer:
   - name:
-      given: "Pieterjan"
-      family: "Verhelst"
-    email: "pieterjan.verhelst@inbo.be"
-    orcid: "0000-0002-2610-6941"
+      given: "?"
+      family: "?"
+    email: "?"
+    orcid: "?"
     affiliation: "Instituut voor Natuur- en Bosonderzoek (INBO)"
 lang: nl
 style: INBO
@@ -42,23 +54,111 @@ output:
 
 # Dankwoord {.unnumbered}
 
-De tekst voor het optionele dankwoord.
+De totstandkoming van deze deskstudie over de vispasseerbaarheid van de getijdestuw op de Dender in Dendermonde was niet mogelijk zonder de essentiële medewerking en inbreng van verschillende personen.
+
+Wij danken in het bijzonder **Walewein Muylle**, **Geert Roggeman** en **Tim Verleyen** van **De Vlaamse Waterweg nv**.
+Hun expertise, de bereidwilligheid om technische en operationele data te delen, en de open communicatie over het beheer en de automatisering van de stuw waren van onschatbare waarde voor de analyse en de interpretatie van de resultaten.
+Hun inzicht in de dagelijkse werking en de nautische randvoorwaarden heeft geholpen om de bevindingen in een praktische en beleidsrelevante context te plaatsen.
+
+Wij zijn hen erkentelijk voor hun tijd, de nauwgezetheid van de verstrekte informatie en hun engagement ten aanzien van de optimalisatie van ecologische connectiviteit in het Vlaamse waterwegennetwerk.
 
 # Voorwoord {.unnumbered}
 
-De tekst voor het optionele voorwoord.
+Dit rapport presenteert de resultaten van een verkennende deskstudie naar de stroomopwaartse vispasseerbaarheid van het getijdestuw-sluiscomplex op de Dender in Dendermonde.
+
+Vrije vismigratie is van cruciaal belang voor het behoud en herstel van de aquatische biodiversiteit en de ecologische dynamiek van onze waterlopen.
+De getijdestuw in Dendermonde, een essentieel onderdeel van het Sigmaplan en waterbeheer, vormt op dit moment een potentiële barrière voor migrerende vissoorten.
+
+Het hoofddoel van deze studie is het analyseren van de mate waarin het huidige operationele beheer van de stuw de stroomopwaartse migratie van vissen vanuit de Zeeschelde naar de Dender toelaat of belemmert.
+De bevindingen hierin vormen de eerste stap en de basis voor mogelijke toekomstige optimalisaties in het stuwbeheer om de ecologische connectiviteit te herstellen of te verbeteren.
+
+Wij hopen dat dit werk bijdraagt aan een geïntegreerd waterbeheer dat zowel de veiligheidsfunctie als de ecologische waarde van de Dender en de Zeeschelde ten goede komt.
 
 # Samenvatting {.unnumbered}
 
-<!-- description: start -->
+Deze verkennende deskstudie evalueert de stroomopwaartse vispasseerbaarheid van het getijdestuw-sluiscomplex op de Dender in Dendermonde onder het **huidige beheer**.
+Vrije vismigratie is essentieel voor zowel diadrome (migratie tussen zee en zoetwater) als potamodrome (migratie binnen zoetwater) vissoorten, maar wordt vaak belemmerd door kunstwerken in Vlaamse waterlopen.
+De getijdestuw in Dendermonde, onderdeel van het Sigmaplan, vormt een potentieel migratieknelpunt tussen de Zeeschelde en de Dender.
 
-De tekst voor de verplichte samenvatting.
-Hou het [Heerlijk Helder](https://overheid.vlaanderen.be/communicatie/heerlijk-helder).
-<!-- description: end -->
+**Belangrijkste bevindingen over vispassage**
+
+Onder de huidige omstandigheden is **stroomopwaartse visbeweging mogelijk**, zij het voor een beperkt deel van de tijd.
+De kans op succesvolle migratie varieert sterk afhankelijk van de route en de stromingscondities:
+
+-   **Vispassage onder de stuw** is gunstiger dan over de stuw.
+
+    -   Vissen konden stroomopwaarts onder de stuw passeren gedurende **8.6% van de tijd** in de studieperiode.
+
+    -   Wanneer water onder de stuw stroomt (gehinderde stroming), is passage mogelijk in **30.9% van die tijd**.
+
+    -   Bij **'vrije stroming'** (onderste schuif volledig open) is de stuw passeerbaar in **76.3% van de tijd**.
+
+    -   Onder gehinderde stroming is stroomopwaartse beweging onder de stuw alleen mogelijk als het stroomopwaartse waterpeil **maximaal 14 cm** boven het stroomafwaartse peil ligt.
+
+-   **Vispassage over de stuw** is beperkter:
+
+    -   Vissen konden stroomopwaarts over de stuw passeren gedurende **7.0% van de tijd** in de studieperiode.
+
+    -   Wanneer water over de stuw stroomt (gehinderde stroming), is passage mogelijk in slechts **11.3% van die tijd**.
+
+    -   Visbeweging over de stuw is vooral mogelijk bij **eb** wanneer het water over de stuw kan stromen in stroomopwaartse richting.
+
+De studieperiode toonde aan dat stroomafwaartse migratiemogelijkheden elke dag aanzienlijk hoger zijn dan stroomopwaartse migratiemogelijkheden.
+De stuw wordt het grootste deel van de tijd (62.0%) geregeld met de bovenste plaat, waarbij water voornamelijk óver de stuw gaat.
+In periodes van verhoogd debiet wordt de onderste stuwplaat gebruikt (26.8% van de tijd), waarbij water voornamelijk ónder de stuw stroomt.
+
+**Aanbevelingen voor verbetering**
+
+Om de vispassage te verbeteren, geniet het de voorkeur om stuwbeheer toe te passen dat de **natuurlijke *free flowing* condities** zo veel mogelijk benadert.
+
+-   **Voorkeursbeheer:** Het wordt aanbevolen om, wanneer dit mogelijk is, de **onderste schuif** te gebruiken om de stuw te regelen.
+    Vispassage over de stuw is sterk gelimiteerd bij regeling met de bovenste schuif.
+
+-   **Aanbevolen operationele maatregel:**
+
+    -   De **onderste schuif** naar boven te zetten met een opening van minstens **30 cm** tussen de bodem en de bovenkant van de onderste schuif.
+
+    -   Dit te doen wanneer het stroomopwaartse peil **minder dan 14 cm** hoger ligt dan het stroomafwaartse peil.
+
+In de studie werd een uniforme stroomsnelheidsdistributie verondersteld, wat een vereenvoudiging is van de werkelijkheid.
+
+**Vervolgonderzoek**
+
+Om tot duidelijk afgelijnde beheersvoorstellen te komen, wordt een combinatie van een **telemetriestudie** (om het belang van migratie in kaart te brengen) en een **diepgaandere hydraulische modelstudie** (om de effectiviteit van aangepast beheer te evalueren) aangeraden.
 
 # Aanbevelingen voor beheer en/of beleid {.unnumbered}
 
-Verplicht wanneer relevant.
+Op basis van de analyse van de stroomopwaartse vispasseerbaarheid van het getijdestuw-sluiscomplex op de Dender in Dendermonde onder het huidige beheer, worden de volgende aanbevelingen voor beheer en beleid geformuleerd.
+
+**1. Bevordering van natuurlijke condities (beleidsrichtlijn)**
+
+-   **Prioriteer *free flowing* condities:** In lijn met beleidskaders zoals de Natuurherstelwet, moet worden gestreefd naar beheersregimes die de natuurlijke, onbelemmerde stromingscondities (*free flowing*) zo veel mogelijk benaderen.
+
+-   **Erkenning van de stuw als knelpunt:** De getijdestuw vormt een potentieel vismigratieknelpunt, ondanks de beperkte periodes van passeerbaarheid.
+    Beleid moet vrije vismigratie in het hydrografische stroomgebied verzekeren, zoals vastgelegd in onder andere de Benelux-beschikking van 1996 en 2009.
+
+**2. Optimalisatie van het huidige stuwbeheer (operationele aanbeveling)**
+
+De analyse toont aan dat passage onder de stuw aanzienlijk meer mogelijkheden biedt dan passage over de stuw.
+De aanbevelingen zijn dan ook gericht op het maximaliseren van de passeerbaarheid via de onderste schuif.
+
+-   **Gebruik de onderste schuif als voorkeursmiddel:** Het wordt aangeraden om de regeling van de stuw, wanneer volledige *free flowing* condities niet mogelijk zijn, uit te voeren met de onderste schuif, aangezien vispassage over de stuw sterk gelimiteerd is.
+
+-   **Implementatie van een vismigratiestand (naar analogie met Mechelen):** Er wordt aangeraden om, wanneer de hydrologische omstandigheden dit toelaten, een specifiek beheerregime te hanteren, vergelijkbaar met dat van stuw 222 op de Dijle in Mechelen.
+    Dit houdt in:
+
+    -   Open de onderste schuif tot een opening van **minstens 30 cm** tussen de bodem en de bovenkant van de schuif.
+
+    -   Pas dit toe wanneer het stroomopwaartse peil **minder dan 14 cm** hoger ligt dan het stroomafwaartse peil, aangezien dit de drempel is waarbij stroomopwaartse passeerbaarheid onder de stuw mogelijk wordt bij gehinderde stroming.
+
+**3. Beleidsondersteunend onderzoek (beleidsaanbeveling)**
+
+Gezien de datagedreven aard en de noodzakelijke aannames in deze deskstudie (bv. uniforme stroomsnelheid), is vervolgonderzoek cruciaal voor de onderbouwing van structurele aanpassingen:
+
+-   **Hydraulische modelstudie:** Er is een diepgaandere hydraulische modelstudie nodig om de stromingsdynamiek en de effectiviteit van voorgestelde aangepaste beheersstrategieën te simuleren en te evalueren.
+
+-   **Ecologische monitoring (telemetrie):** Een telemetriestudie wordt aangeraden om het daadwerkelijke migratiegedrag van vissen bij de stuw in kaart te brengen en zo het belang en de effectiviteit van de migratiemogelijkheden te bepalen.
+    Dit dient als basis voor de evaluatie van de ecologische connectiviteit.
 
 ```{r setup, include = FALSE}
 library(knitr)

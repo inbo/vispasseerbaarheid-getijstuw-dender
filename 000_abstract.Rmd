@@ -1,6 +1,54 @@
 \benglish
 
-# English abstract {-}
+# English abstract {.unnumbered}
 
-Insert a translation of the summary here.
+This exploratory desk study evaluates the upstream fish passability of the tidal weir-lock complex on the Dender river in Dendermonde under its current management.
+Free fish migration is essential for both diadromous (migration between sea and freshwater) and potamodromous (migration within freshwater) fish species, but is often obstructed by structures in Flemish waterways.
+The tidal weir in Dendermonde, which is part of the Sigma Plan, constitutes a potential migration bottleneck between the Sea Scheldt and the Dender.
+
+**Key Findings on Fish Passage**
+
+Under the current circumstances, upstream fish movement is possible, albeit for a limited portion of the time.
+The chance of successful migration varies greatly depending on the route and the flow conditions:
+
+**Fish passage under the weir is more favorable than over the weir.**
+
+-   Fish were able to pass upstream under the weir for **8.6% of the time** during the study period.
+
+-   When water flows under the weir (restricted flow), passage is possible in **30.9%** of that time.
+
+-   Under 'free flowing' conditions (lower gate fully open), the weir is passable for **76.3%** of the time.
+
+-   Under restricted flow, upstream movement under the weir is only possible if the upstream water level is **14 cm or less** above the downstream level.
+
+**Fish passage over the weir is more restricted:**
+
+-   Fish were able to pass upstream over the weir for **7.0% of the time** during the study period.
+
+-   When water flows over the weir (restricted flow), passage is possible in only **11.3%** of that time.
+
+-   Fish movement over the weir is primarily possible during **ebb tide** when the water can flow over the weir in an upstream direction.
+
+The study period showed that downstream migration possibilities are significantly higher every day than upstream migration possibilities.
+The weir is regulated with the upper plate for most of the time (62.0%), causing water to primarily flow **over** the weir.
+In periods of increased discharge, the lower weir plate is used (26.8% of the time), causing water to primarily flow **under** the weir.
+
+**Recommendations for Improvement**
+
+To improve fish passage, it is preferred to apply weir management that approaches the natural **free flowing conditions** as much as possible.
+
+**Preferred Management:** It is recommended to use the **lower gate** to regulate the weir, where possible.
+Fish passage over the weir is strongly limited when regulated with the upper gate.
+**Recommended operational measure:**
+
+-   Raising the **lower gate** to create an opening of at least **30 cm** between the bed and the top of the lower gate.
+
+-   Doing this when the upstream level is **less than 14 cm** higher than the downstream level.
+
+The study assumed a uniform flow velocity distribution, which is a simplification of reality.
+
+**Future Research**
+
+To arrive at clearly defined management proposals, a combination of a **telemetry study** (to map the importance of migration) and a more **in-depth hydraulic model study** (to evaluate the effectiveness of adjusted management) is recommended.
+
 \eenglish
