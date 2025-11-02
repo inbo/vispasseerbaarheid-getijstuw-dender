@@ -70,7 +70,7 @@ De huidige beheerstrategie van de getijdestuw wordt geanalyseerd op basis van be
 Op basis van de bovenstaande analyse wordt nagegaan of een aangepast beheer ter bevordering van stroomopwaartse vismigratie haalbaar en wenselijk is.
 Hierbij wordt onder andere gekeken naar:
 
--   De mogelijkheid tot invoering van een zogenaamde *vismigratiestand*, naar analogie met de werking van bovenstuw 222 op de Dijle in Mechelen (Stevens & Coeck, 2010)
+-   De mogelijkheid tot invoering van een zogenaamde *vismigratiestand*, naar analogie met de werking van bovenstuw 222 op de Dijle in Mechelen [@stevens2010].
 -   Beperkingen of randvoorwaarden, zoals de noodzaak tot gegarandeerde bevaarbaarheid stroomopwaarts van de stuw
 
 **Voorstel voor vervolgonderzoek**
@@ -80,7 +80,7 @@ Dit kan bestaan uit:
 
 -   Veldmetingen van vismigratie aan de hand van monitoring of telemetrie
 -   Hydraulische modellering van stroomsnelheden tijdens migratievensters
--   Vergelijking met eerdere evaluaties van aangepast stuwbeheer, zoals in Mechelen (Vermeersch et al., 2017)
+-   Vergelijking met eerdere evaluaties van aangepast stuwbeheer, zoals in Mechelen [@vermeersch2017].
 
 # Inleiding
 
