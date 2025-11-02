@@ -3,7 +3,7 @@
 ## 📝 Beschrijving
 Dit projectrepository bevat de resultaten, analyses en implementatievoorstellen voortkomend uit een **verkennende deskstudie** naar de **stroomopwaartse vispasseerbaarheid** van het getijdestuw-sluiscomplex op de Dender in Dendermonde.
 
-De studie, uitgevoerd door het **Instituut voor Natuur- en Bosonderzoek (INBO)**, evalueert de mate waarin het huidige operationele beheer van de stuw de migratie van vissoorten vanuit de Zeeschelde naar de Dender toelaat of belemmert, wat cruciaal is voor het herstel van de ecologische connectiviteit in het Vlaamse waterwegennetwerk.
+De studie, uitgevoerd door het **Instituut voor Natuur- en Bosonderzoek (INBO)** in opdracht van **De Vlaamse Waterweg nv (DVW)**, evalueert de mate waarin het huidige operationele beheer van de stuw de migratie van vissoorten vanuit de Zeeschelde naar de Dender toelaat of belemmert, wat cruciaal is voor het herstel van de ecologische connectiviteit in het Vlaamse waterwegennetwerk.
 
 Het herstellen van de vrije vismigratie op de Dender is essentieel voor zowel **diadrome** (migratie tussen zee en zoetwater) als **potamodrome** (migratie binnen zoetwater) vissoorten.
 
