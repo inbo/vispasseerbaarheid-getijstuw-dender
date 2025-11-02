@@ -1082,8 +1082,9 @@ ho_results_df <- map_dfr(ho_results, as_tibble)
 Hoe hoger het debiet, des te hoger dienen de opening onder de stuw en de waterhoogte boven de stuwkruin te zijn om vispassage over de stuw mogelijk te maken.
 Bij een debiet van 10 m³ en een opening onder de stuw van 0.5 m is vispassage mogelijk vanaf een waterhoogte boven de stuwkruin van 1 m (Fig. \@ref(fig:rangebovenstuw)).
 Bij een debiet van 90 m³ en een opening onder de stuw van 0.5 m is vispassage mogelijk vanaf een waterhoogte boven de stuwkruin van meer dan 5 m.
+Een datagedreven analyse m.b.v een beslissingsboom geeft aan hoe bij 'vrije stroming' een debiet lager dan 15 m³/s nodig is om vispassage over de stuw mogelijk te maken (Fig. \@ref(fig:dtfreeflowunder)).
 
-```{r rangebovenstuw, fig.cap="Stroomsnelheid over de stuw (V_o in m/s) un functie van de opening onder de stuw (h_u in m) voor verschillende debieten (m³/s).", fig.width=12, fig.height=16, out.width='100%', fig.align='center'}
+```{r rangebovenstuw, fig.cap="Stroomsnelheid over de stuw ($V_o$ in m/s) in functie van de opening onder de stuw ($h_u$ in m) voor verschillende debieten.", fig.width=12, fig.height=16, out.width='100%', fig.align='center'}
 # Set the parameters for the plots
 V_o_threshold <- 1
 h_up <- 5.0
@@ -1172,6 +1173,7 @@ print(solutions)
 Vispassage onder de stuw is onafhankelijk van de opening en wordt louter bepaald door het verschil tussen het stroomopwaarts en stroomafwaarts peil.
 Stroomopwaartse vispassage onder de stuw is enkel mogelijk indien het verschil tussen stroomopwaarts en stroomafwaarts peil minder dan 14 cm bedraagt (Fig. \@ref(fig:rangeonderstuw)).
 Bij vrije stroming is in 76.3 % van de gevallen de stuw passeerbaar langs onderen.
+Een datagedreven analyse m.b.v een beslissingsboom geeft aan hoe bij 'vrije stroming' een debiet lager dan 133 m³/s nodig is om vispassage onder de stuw mogelijk te maken (Fig. \@ref(fig:dtfreeflowover)).
 
 ```{r rangeonderstuw, fig.cap="Stroomsnelheid onder de stuw in functie van het hoogteverschil tussen het stroomopwaarts en stroomafwaarts waterpeil.", fig.width=8, fig.height=8, out.width='100%', fig.align='center'}
 # Set the parameters for the plots
@@ -1258,7 +1260,7 @@ Op 15 januari 2024 was het business as usual met de bovenste schuif die naar omh
 Afhankelijk van de bovenafvoer neemt het stroomopwaarts peil dan meer of minder toe.
 Net voor en net na de werking van de bovenste schuif is er dikwijls een kort venster voor vispassage doordat de stroomsnelheid niet te hoog is.
 
-```{r tideplot20240115, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterpeil, stuwwerking en stroomsnelheid op 15 januari 2024. De gekleurde balken geven aan of vispassage over of onder de stuw mogelijk is. h_upstream = stroomopwaarts waterpeil; h_downstream = stroomafwaarts waterpeil; h_o = waterhoogte boven stuwkruin; h_si = hoogte bovenkant stuw; sluice_opening = opening onder stuw; V_o = stroomsnelheid over de stuw; V_u = stroomsnelheid onder de stuw."}
+```{r tideplot20240115, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterpeil, stuwwerking en stroomsnelheid op 15 januari 2024. De gekleurde balken geven aan of vispassage over of onder de stuw mogelijk is. $h_upstream$ = stroomopwaarts waterpeil; $h_downstream$ = stroomafwaarts waterpeil; $h_o$ = waterhoogte boven stuwkruin; $h_si$ = hoogte bovenkant stuw; $sluice_opening$ = opening onder stuw; $V_o$ = stroomsnelheid over de stuw; $V_u$ = stroomsnelheid onder de stuw."}
 plot_tidal_cycle_analysis_combined(data, chosen_date = as.POSIXct("2024-01-15", tz = "UTC"))
 ```
 
@@ -1272,7 +1274,7 @@ Ongeveer twee uur na hoogwater zakte de bovenste schuif opnieuw waardoor het str
 Stroomopwaartse migratie over de stuw was dan voor enkele minuten mogelijk.
 De stroomsnelheid werd echter snel te hoog om nog vispassage mogelijk te maken.
 
-```{r tideplot20240322, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterpeil, stuwwerking en stroomsnelheid op 22 maart 2024. De gekleurde balken geven aan of vispassage over of onder de stuw mogelijk is. h_upstream = stroomopwaarts waterpeil; h_downstream = stroomafwaarts waterpeil; h_o = waterhoogte boven stuwkruin; h_si = hoogte bovenkant stuw; sluice_opening = opening onder stuw; V_o = stroomsnelheid over de stuw; V_u = stroomsnelheid onder de stuw."}
+```{r tideplot20240322, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterpeil, stuwwerking en stroomsnelheid op 22 maart 2024. De gekleurde balken geven aan of vispassage over of onder de stuw mogelijk is. $h_upstream$ = stroomopwaarts waterpeil; $h_downstream$ = stroomafwaarts waterpeil; $h_o$ = waterhoogte boven stuwkruin; $h_si$ = hoogte bovenkant stuw; $sluice_opening$ = opening onder stuw; $V_o$ = stroomsnelheid over de stuw; $V_u$ = stroomsnelheid onder de stuw."}
 plot_tidal_cycle_analysis_combined(data, chosen_date = as.POSIXct("2024-03-22", tz = "UTC"))
 ```
 
@@ -1281,7 +1283,7 @@ Water kon ongehinderd stromen tot ongeveer 16h (wat ook te zien is aan het minim
 Na 16h werd de onderste schuif naar beneden geschoven waardoor het stroomopwaartse peil meer toenam dan eerder op de dag en waardoor de stroomsnelheid onder de stuw aanzienlijk toenam.
 Na de kentering van het getij zorgde het vloedregime echter weer voor een gunstig regime voor stroomopwaartse migratie.
 
-```{r tideplot20240105, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterpeil, stuwwerking en stroomsnelheid op 5 januari 2024. De gekleurde balken geven aan of vispassage over of onder de stuw mogelijk is. h_upstream = stroomopwaarts waterpeil; h_downstream = stroomafwaarts waterpeil; h_o = waterhoogte boven stuwkruin; h_si = hoogte bovenkant stuw; sluice_opening = opening onder stuw; V_o = stroomsnelheid over de stuw; V_u = stroomsnelheid onder de stuw."}
+```{r tideplot20240105, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterpeil, stuwwerking en stroomsnelheid op 5 januari 2024. De gekleurde balken geven aan of vispassage over of onder de stuw mogelijk is. $h_upstream$ = stroomopwaarts waterpeil; $h_downstream$ = stroomafwaarts waterpeil; $h_o$ = waterhoogte boven stuwkruin; $h_si$ = hoogte bovenkant stuw; $sluice_opening$ = opening onder stuw; $V_o$ = stroomsnelheid over de stuw; $V_u$ = stroomsnelheid onder de stuw."}
 plot_tidal_cycle_analysis_combined(data, chosen_date = as.POSIXct("2024-01-05", tz = "UTC"))
 ```
 
@@ -1290,12 +1292,12 @@ Daardoor bleef het stroomafwaarts peil altijd lager dan de bovenkant van de stuw
 De momenten dat de stuw vispasseerbaar waren, waren dan ook zeer beperkt.
 Enkel rond de kentering wanneer wat water naar binnen kon stromen en het verschil tussen stroomopwaarts en stroomafwaarts peil minder dan 15 cm was, was vispassage mogelijk.
 
-```{r tideplot20240108, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterpeil, stuwwerking en stroomsnelheid op 8 januari 2024. De gekleurde balken geven aan of vispassage over of onder de stuw mogelijk is. h_upstream = stroomopwaarts waterpeil; h_downstream = stroomafwaarts waterpeil; h_o = waterhoogte boven stuwkruin; h_si = hoogte bovenkant stuw; sluice_opening = opening onder stuw; V_o = stroomsnelheid over de stuw; V_u = stroomsnelheid onder de stuw."}
+```{r tideplot20240108, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterpeil, stuwwerking en stroomsnelheid op 8 januari 2024. De gekleurde balken geven aan of vispassage over of onder de stuw mogelijk is. $h_upstream$ = stroomopwaarts waterpeil; $h_downstream$ = stroomafwaarts waterpeil; $h_o$ = waterhoogte boven stuwkruin; $h_si$ = hoogte bovenkant stuw; $sluice_opening$ = opening onder stuw; $V_o$ = stroomsnelheid over de stuw; $V_u$ = stroomsnelheid onder de stuw."}
 plot_tidal_cycle_analysis_combined(data, chosen_date = as.POSIXct("2024-01-08", tz = "UTC"))
 ```
 
-```{r tideplot2024, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterpeil, stuwwerking en stroomsnelheid van 1 januari 2024 tot en met 31 maart 2024. h_upstream = stroomopwaarts waterpeil; h_downstream = stroomafwaarts waterpeil; h_o = waterhoogte boven stuwkruin; h_si = hoogte bovenkant stuw; sluice_opening = opening onder stuw; V_o = stroomsnelheid over de stuw; V_u = stroomsnelheid onder de stuw."}
-output="html"
+```{r tideplot2024, fig.width=12, fig.height=8, out.width='100%', fig.align='center', fig.cap="Tijdreeksen van waterpeil, stuwwerking en stroomsnelheid van 1 januari 2024 tot en met 31 maart 2024. $h_upstream$ = stroomopwaarts waterpeil; $h_downstream$ = stroomafwaarts waterpeil; $h_o$ = waterhoogte boven stuwkruin; $h_si$ = hoogte bovenkant stuw; $sluice_opening$ = opening onder stuw; $V_o$ = stroomsnelheid over de stuw; $V_u$ = stroomsnelheid onder de stuw."}
+output="pdf"
 if (output=="html"){ggplotly(plot_tidal_cycle_analysis_combined(data, chosen_date = "full"))}
 ```
 
