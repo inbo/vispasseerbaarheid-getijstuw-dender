@@ -84,4 +84,4 @@ Voor vragen of opmerkingen over dit onderzoek kunt u contact opnemen met de aute
 ---
 
 ## 📄 Licentie
-Dit werk valt onder een **Creative Commons Naamsvermelding 4.0 Internationaal-licentie**.
+Dit werk valt onder een **Creative Commons Attribution 4.0 International**.
