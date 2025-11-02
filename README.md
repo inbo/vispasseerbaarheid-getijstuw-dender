@@ -31,7 +31,7 @@ Onder de huidige omstandigheden is **stroomopwaartse visbeweging mogelijk**, zij
 
 ### Cruciale Drempels
 * **Vispassage onder de stuw is gunstiger** dan over de stuw.
-* **Stroomopwaartse beweging onder de stuw bij gehinderde stroming** is enkel mogelijk als het stroomopwaartse waterpeil **maximaal 14 cm** ($0.14$ m) boven het stroomafwaartse peil ligt.
+* **Stroomopwaartse beweging onder de stuw bij gehinderde stroming** is enkel mogelijk als het stroomopwaartse waterpeil **maximaal 14 cm** boven het stroomafwaartse peil ligt.
 * Onder 'vrije stroming' (onderste schuif volledig open) is de stuw passeerbaar voor **76.3%** van de tijd.
 
 ---
