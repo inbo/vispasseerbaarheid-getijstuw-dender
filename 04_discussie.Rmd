@@ -3,9 +3,12 @@
 ## Is stroomopwaartse visbeweging over of onder de getijdestuw mogelijk?
 
 Ja, onder de huidige omstandigheden is stroomopwaartse beweging mogelijk.
-In de studieperiode konden vissen stroomopwaarts bewegen over en onder de stuw voor respectievelijk 6.8 % en 8.2% van de tijd.
-Ter vergelijking, in periodes dat de schuif volledig naar boven is geschoven en water ongehinderd kan stromen (4.1 % van de gevallen) dan is het gedurende 76.3 % van de tijd mogelijk voor vissen om stroomopwaarts te bewegen.
-Onder natuurlijke omstandigheden (i.e. geen getijdestuw) zou het dus negen keer waarschijnlijker zijn dat vissen direct stroomopwaarts kunnen bewegen bij het aanmelden stroomafwaarts.
+In de studieperiode konden vissen stroomopwaarts bewegen over en onder de stuw voor respectievelijk 7.0 % en 8.6 % van de tijd.
+Wanneer er water onder of over de stuw gaat kunnen vissen respectievelijk in 30.9 % en 11.3 % van de tijd onder of over de stuw passeren.
+De kans dat vissen stroomopwaarts kunnen migreren als er water onder stuw gaat in plaats van over stuw is bijna drie keer zo groot.
+
+In periodes dat de schuif volledig naar boven is geschoven en water ongehinderd kan stromen (4.1 % van de gevallen) dan is het gedurende 76.3 % van de tijd mogelijk voor vissen om stroomopwaarts te bewegen.
+Onder natuurlijke omstandigheden (i.e. geen getijdestuw) is de kans dat vissen direct stroomopwaarts kunnen bewegen bij het aanmelden stroomafwaarts nog aanzienlijk groter.
 
 ## Onder welke omstandigheden is stroomopwaartse visbeweging mogelijk?
 
@@ -15,7 +18,7 @@ Stroomopwaartse beweging onder de getijstuw is mogelijk wanneer:
 
 -   Bij vrije stroming (i.e. de schuif staat zo hoog dat water geen hinder ondervindt waardoor stroomopwaarts en stroomafwaarts peil nagenoeg hetzelfde zijn), wanneer het totaal debiet lager ligt dan 133 m³/s.
 
-Stroomopwaartse beweging boven de getijstuw is mogelijk wanneer het stroomafwaarts waterpeil hoger is dan de bovenkant van de bovenste schuif, ongeacht of er sprake is van 'vrije stroming' of niet.
+Stroomopwaartse beweging over de getijstuw is mogelijk wanneer het stroomafwaarts waterpeil hoger is dan de bovenkant van de bovenste schuif, ongeacht of er sprake is van 'vrije stroming' of niet.
 Puur vrije stroming over de stuw is niet mogelijk omdat de schuiven het water steeds zullen hinderen.
 Stroomopwaartse beweging over de getijstuw is mogelijk wanneer:
 
@@ -33,7 +36,7 @@ Daarnaast werd er enkel gewerkt met bestaande gegevens en werden geen simulaties
 
 ## Hoe kan vispassage verbeterd worden?
 
-In eerste instantie genieten *free flowing* condities de voorkeur omdat deze de natuurlijke situatie zoveel mogelijk tegemoet komen.
+In eerste instantie genieten *free flowing* condities (zoals beschreven in de Natuurherstelwet) de voorkeur omdat deze de natuurlijke situatie zoveel mogelijk tegemoet komen.
 In tweede instantie wordt gebruik van de onderste schuif om de stuw te regelen, aangeraden.
 Vispassage over de stuw is sterk gelimiteerd wanneer ervoor wordt gekozen om met de bovenste schuif het waterpeil te regelen.
 Onder *free flowing* condities, gehinderde stroming waarbij water onder de stuw gaat en gehinderde stroming waarbij water over de stuw gaat, omvatte het potentieel tijdsvenster voor stroomopwaartse migratie respectievelijk 76.3 %, 30.9 % en 11.3 % van de tijd.
